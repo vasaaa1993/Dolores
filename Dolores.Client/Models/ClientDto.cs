@@ -1,11 +1,9 @@
 ﻿using System;
-using Dolores.DbAccess.Interfaces;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Dolores.DbAccess.Entities
+namespace Dolores.Client.Models
 {
-	class Client : IEntity
+	class ClientDto
 	{
 		public int Id { get; set; }
 
@@ -24,9 +22,7 @@ namespace Dolores.DbAccess.Entities
 		public string SecondName { get; set; }
 		public string MiddleName { get; set; }
 
-		[Column(TypeName = "DateTime")]
 		public DateTime LastContactTime { get; set; }
-		[Column(TypeName = "DateTime")]
 		public DateTime DateOfContract { get; set; }
 
 		public int GasSealNumber { get; set; }
@@ -36,15 +32,13 @@ namespace Dolores.DbAccess.Entities
 
 		//public virtual Equipment Equipment { get; set; }
 
-		public virtual ICollection<EquimpentParam> Equimpents { get; set; }
-		public virtual ICollection<Phone> Phones { get; set; }
+		public virtual List<EquipmentParamDto> Equimpents { get; set; }
+		public virtual List<PhoneDto> Phones { get; set; }
 
-		public Client()
+		public ClientDto()
 		{
-			Equimpents = new List<EquimpentParam>();
-			Phones = new List<Phone>(); 
+			Equimpents = new List<EquipmentParamDto>();
+			Phones = new List<PhoneDto>();
 		}
-
-
 	}
 }

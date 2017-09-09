@@ -7,6 +7,7 @@ namespace Dolores.DbAccess.Entities
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public string Path { get; set; }
-		public virtual Equipment Equipment { get; set; }
+		//public virtual Equipment Equipment { get; set; }
+		public virtual Client Client { get; set; }
 	}
 }

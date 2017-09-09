@@ -9,6 +9,6 @@
       Title="ClientListView">
 
     <Grid>
-        
+		<Label Content="ASDasdasdasd"></Label>
     </Grid>
 </Page>

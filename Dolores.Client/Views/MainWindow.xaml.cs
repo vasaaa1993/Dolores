@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dolores.Client.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Dolores.Client
+namespace Dolores.Client.Views
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
@@ -23,6 +24,11 @@ namespace Dolores.Client
 		public MainWindow()
 		{
 			InitializeComponent();
+			Init();
+		}
+		private void Init()
+		{
+			MainFrame.Navigate(new ClientListView());
 		}
 	}
 }

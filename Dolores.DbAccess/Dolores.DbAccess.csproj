@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201709090951372_addedRelation.Designer.cs">
       <DependentUpon>201709090951372_addedRelation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709091631175_changedDb.cs" />
+    <Compile Include="Migrations\201709091631175_changedDb.Designer.cs">
+      <DependentUpon>201709091631175_changedDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709090951372_addedRelation.resx">
       <DependentUpon>201709090951372_addedRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709091631175_changedDb.resx">
+      <DependentUpon>201709091631175_changedDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
