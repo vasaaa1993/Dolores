@@ -1,5 +1,5 @@
-﻿using Dolores.DbAccess.Interfaces;
-using System;
+﻿using System;
+using Dolores.DbAccess.Interfaces;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 

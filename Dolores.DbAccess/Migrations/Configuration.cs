@@ -1,10 +1,8 @@
+using System.Data.Entity.Migrations;
+using System.Linq;
+
 namespace Dolores.DbAccess.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
     internal sealed class Configuration : DbMigrationsConfiguration<Dolores.DbAccess.EF.DoloresDbContext>
     {
         public Configuration()
@@ -12,20 +10,41 @@ namespace Dolores.DbAccess.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Dolores.DbAccess.EF.DoloresDbContext context)
+        protected override void Seed(EF.DoloresDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
-        }
+			if (!context.Clients.Any())
+			{
+				//Client client = new Client()
+				//{
+				//	FirstName = "Vasyl",
+				//	SecondName = "Barna",
+				//	Phones = new List<Phone>()
+				//{
+				//	new Phone()
+				//	{
+				//		Number = "5464313544654"
+				//	},
+				//	new Phone()
+				//	{
+				//		Number = "asdassdfsdfdsf"
+				//	}
+				//},
+				//	Equipment = new Equipment()
+				//	{
+				//		Name = "Котел",
+				//		Params = new List<EquimpentParam>()
+				//	{
+				//		new EquimpentParam()
+				//		{
+				//			Name = "Фото",
+				//			Path = "path"
+				//		}
+				//	}
+				//	}
+				//};
+				//context.Clients.Add(client);
+				//context.SaveChanges();
+			}
+		}
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dolores.DbAccess.Interfaces
+﻿namespace Dolores.DbAccess.Interfaces
 {
 	public interface IEntity
 	{

@@ -58,12 +58,28 @@
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\201709090933279_AddedTables.cs" />
+    <Compile Include="Migrations\201709090933279_AddedTables.Designer.cs">
+      <DependentUpon>201709090933279_AddedTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709090951372_addedRelation.cs" />
+    <Compile Include="Migrations\201709090951372_addedRelation.Designer.cs">
+      <DependentUpon>201709090951372_addedRelation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709090933279_AddedTables.resx">
+      <DependentUpon>201709090933279_AddedTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709090951372_addedRelation.resx">
+      <DependentUpon>201709090951372_addedRelation.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
