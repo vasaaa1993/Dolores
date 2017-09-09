@@ -6,4 +6,7 @@
     <Application.Resources>
          
     </Application.Resources>
+	<vm:viewmodellocator x:key="Locator" d:isdatasource="True">
+
+	</vm:viewmodellocator>
 </Application>
