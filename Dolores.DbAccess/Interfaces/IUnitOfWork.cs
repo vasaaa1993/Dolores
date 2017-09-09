@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Dolores.DbAccess.Interfaces
 {
-	interface IUnitOfWork
+	public interface IUnitOfWork
 	{
+		IRepository<T> Repository<T>() where T : class, IEntity;
+		void Save();
+		Task SaveAsync();
 	}
 }

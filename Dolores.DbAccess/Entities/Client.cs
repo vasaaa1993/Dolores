@@ -30,5 +30,7 @@ namespace Dolores.DbAccess.Entities
 		public int ContractNumber { get; set; }
 		public string Description { get; set; }
 
+		public Equipment Equipment { get; set; }
+
 	}
 }
