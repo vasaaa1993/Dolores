@@ -6,5 +6,7 @@ namespace Dolores.DbAccess.Entities
 	{
 		public int Id { get; set; }
 		public string Number { get; set; }
+
+		public virtual Client Client { get; set; }
 	}
 }

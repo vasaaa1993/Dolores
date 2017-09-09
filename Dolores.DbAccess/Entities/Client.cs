@@ -1,5 +1,7 @@
 ﻿using Dolores.DbAccess.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dolores.DbAccess.Entities
 {
@@ -22,7 +24,9 @@ namespace Dolores.DbAccess.Entities
 		public string SecondName { get; set; }
 		public string MiddleName { get; set; }
 
+		[Column(TypeName = "DateTime")]
 		public DateTime LastContactTime { get; set; }
+		[Column(TypeName = "DateTime")]
 		public DateTime DateOfContract { get; set; }
 
 		public int GasSealNumber { get; set; }
@@ -30,7 +34,9 @@ namespace Dolores.DbAccess.Entities
 		public int ContractNumber { get; set; }
 		public string Description { get; set; }
 
-		public Equipment Equipment { get; set; }
+		public virtual Equipment Equipment { get; set; }
+
+		public virtual ICollection<Phone> Phones { get; set; }
 
 	}
 }

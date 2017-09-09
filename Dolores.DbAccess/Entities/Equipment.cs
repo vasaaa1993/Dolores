@@ -6,6 +6,7 @@ namespace Dolores.DbAccess.Entities
 	class Equipment : IEntity
 	{
 		public int Id { get; set; }
-		public List<EquimpentParam> Params { get; set; }
+		public string Name { get; set; }
+		public virtual ICollection<EquimpentParam> Params { get; set; }
 	}
 }
