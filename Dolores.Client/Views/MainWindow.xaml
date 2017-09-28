@@ -5,9 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dolores.Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid Margin="0,0,0.4,0.8">
-		<Frame x:Name="MainFrame">
+        Title="MainWindow" Height="350" Width="800">
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Rectangle Grid.Column="0" Fill="AliceBlue"/>
+	    <Rectangle Grid.Column="1" Fill="Red"/>
+		<StackPanel Grid.Column="0">
+			<Button Content="Users" />
+			<Button Content="Equepment"/>
+		</StackPanel>
+
+
+		<Frame x:Name="MainFrame" Grid.Column="1">
 			
 		</Frame>
     </Grid>
