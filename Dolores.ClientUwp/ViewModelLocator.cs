@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Dolores.ClientUwp.ViewModels;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
@@ -31,14 +32,26 @@ namespace Dolores.ClientUwp
 			SimpleIoc.Default.Register<INavigationService, NavigationService>();
 
 			// Register services 
-			//SimpleIoc.Default.Register<IWeatherService, WeatherService>();
-			//SimpleIoc.Default.Register<IHistoryService, HistoryService>();
-			//SimpleIoc.Default.Register<ICitiesService, CitiesService>();
+			
+			// Register ViewModels
+			SimpleIoc.Default.Register<ClientListViewModel>();
+			SimpleIoc.Default.Register<MainViewModel>();
+		}
 
-			//SimpleIoc.Default.Register<WeatherViewModel>();
-			//SimpleIoc.Default.Register<CitiesViewModel>();
-			//SimpleIoc.Default.Register<HistoryViewModel>();
+		public ClientListViewModel ClientListVMInstance
+		{
+			get
+			{
+				return ServiceLocator.Current.GetInstance<ClientListViewModel>();
+			}
+		}
 
+		public MainViewModel MainVMInstance
+		{
+			get
+			{
+				return ServiceLocator.Current.GetInstance<MainViewModel>();
+			}
 		}
 
 		//// <summary>
@@ -52,34 +65,6 @@ namespace Dolores.ClientUwp
 		//	get
 		//	{
 		//		return ServiceLocator.Current.GetInstance<HistoryViewModel>();
-		//	}
-		//}
-
-		//// <summary>
-		//// Gets the Weather view model.
-		//// </summary>
-		//// <value>
-		//// The Weather view model.
-		//// </value>
-		//public WeatherViewModel WeatherVMInstance
-		//{
-		//	get
-		//	{
-		//		return ServiceLocator.Current.GetInstance<WeatherViewModel>();
-		//	}
-		//}
-
-		//// <summary>
-		//// Gets the Cities view model.
-		//// </summary>
-		//// <value>
-		//// The Cities view model.
-		//// </value>
-		//public CitiesViewModel CitiesVWInstance
-		//{
-		//	get
-		//	{
-		//		return ServiceLocator.Current.GetInstance<CitiesViewModel>();
 		//	}
 		//}
 

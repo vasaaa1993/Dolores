@@ -100,11 +100,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\ClientListViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\ClientListView.xaml.cs">
       <DependentUpon>ClientListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartUpView.xaml.cs">
+      <DependentUpon>StartUpView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -114,16 +118,27 @@
     <None Include="Dolores.ClientUwp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Add User Male_32px.png" />
-    <Content Include="Assets\Appointment Reminders_32px.png" />
-    <Content Include="Assets\Ascending Sorting_32px.png" />
-    <Content Include="Assets\Calendar_32px.png" />
-    <Content Include="Assets\Cancel_32px.png" />
-    <Content Include="Assets\Checked User Male_32px.png" />
-    <Content Include="Assets\Delete_32px.png" />
-    <Content Include="Assets\Descending Sorting_32px_1.png" />
-    <Content Include="Assets\Edit User Male_32px.png" />
-    <Content Include="Assets\Home_32px.png" />
+    <Content Include="Assets\img\Add User Male_32px.png" />
+    <Content Include="Assets\img\Appointment Reminders_32px.png" />
+    <Content Include="Assets\img\Ascending Sorting_32px.png" />
+    <Content Include="Assets\img\Calendar_32px.png" />
+    <Content Include="Assets\img\Cancel_32px.png" />
+    <Content Include="Assets\img\Checked User Male_32px.png" />
+    <Content Include="Assets\img\Delete_32px.png" />
+    <Content Include="Assets\img\Descending Sorting_32px_1.png" />
+    <Content Include="Assets\img\Edit User Male_32px.png" />
+    <Content Include="Assets\img\Home_32px.png" />
+    <Content Include="Assets\img\Menu_32px.png" />
+    <Content Include="Assets\img\Ok_32px.png" />
+    <Content Include="Assets\img\Plus_32px_4.png" />
+    <Content Include="Assets\img\Redo_32px.png" />
+    <Content Include="Assets\img\Search_32px.png" />
+    <Content Include="Assets\img\Settings_32px.png" />
+    <Content Include="Assets\img\Swearing Male_32px_9.png" />
+    <Content Include="Assets\img\To Do_32px.png" />
+    <Content Include="Assets\img\Undo_32px.png" />
+    <Content Include="Assets\img\User Groups_32px.png" />
+    <Content Include="Assets\img\User_32px.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
@@ -131,12 +146,6 @@
     <Content Include="Assets\LargeTile.scale-400.png" />
     <Content Include="Assets\mainwindow.ico" />
     <Content Include="Assets\mainwindow.png" />
-    <Content Include="Assets\Menu_32px.png" />
-    <Content Include="Assets\Ok_32px.png" />
-    <Content Include="Assets\Plus_32px_4.png" />
-    <Content Include="Assets\Redo_32px.png" />
-    <Content Include="Assets\Search_32px.png" />
-    <Content Include="Assets\Settings_32px.png" />
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-125.png" />
     <Content Include="Assets\SmallTile.scale-150.png" />
@@ -167,11 +176,6 @@
     <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
-    <Content Include="Assets\Swearing Male_32px_9.png" />
-    <Content Include="Assets\To Do_32px.png" />
-    <Content Include="Assets\Undo_32px.png" />
-    <Content Include="Assets\User Groups_32px.png" />
-    <Content Include="Assets\User_32px.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
@@ -192,6 +196,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\StartUpView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -202,7 +210,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\img\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

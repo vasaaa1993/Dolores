@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Dolores.Client.ViewModels;
 
 namespace Dolores.Client.Views
 {
@@ -23,6 +24,7 @@ namespace Dolores.Client.Views
 		public ClientView()
 		{
 			InitializeComponent();
+			DataContext = new ClientViewModel();
 		}
 	}
 }

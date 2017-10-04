@@ -1,8 +1,6 @@
-﻿using Caliburn.Micro;
-
-namespace Dolores.Client.ViewModels
+﻿namespace Dolores.Client.ViewModels
 {
-    class ClientViewModel : Screen
+    class ClientViewModel
     {
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dolores.ClientUwp.ViewModels
+namespace Dolores.Client.ViewModels
 {
-	public class ClientListViewModel
-	{
-	}
+    class ClientsListViewModel
+    {
+    }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dolores.ClientUwp.ViewModels
 {
-	public class ClientListViewModel
+	public class MainViewModel
 	{
 	}
 }
