@@ -14,12 +14,12 @@
 		<Rectangle Grid.Column="0" Fill="AliceBlue"/>
 	    <Rectangle Grid.Column="1" Fill="Red"/>
 		<StackPanel Grid.Column="0">
-			<Button Content="Users" />
-			<Button Content="Equepment"/>
+			<Button Content="User" Command="{Binding ToClientsListView}"/>
+			<Button Content="Users List"  Command="{Binding ToClientView}"/>
 		</StackPanel>
 
 
-		<Frame x:Name="MainFrame" Grid.Column="1">
+		<Frame NavigationUIVisibility="Hidden" Grid.Column="1" Content="{Binding CurrentPage}">
 			
 		</Frame>
     </Grid>

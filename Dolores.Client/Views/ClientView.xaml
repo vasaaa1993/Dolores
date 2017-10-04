@@ -8,8 +8,7 @@
       d:DesignHeight="400" d:DesignWidth="400"
       Title="ClientView">
 
-	<Grid RenderTransformOrigin="0.5,0.5">
-	
-
+	<Grid Background="Green">
+		<Label Content="Client View" Padding="100px"></Label>
 	</Grid>
 </Page>

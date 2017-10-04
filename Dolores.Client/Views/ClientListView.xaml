@@ -9,6 +9,6 @@
       Title="ClientListView">
 
     <Grid Background="AliceBlue">
-		<Label Content="ASDasdasdasd"></Label>
+		<Label Content="Clients List View" Padding="100px"></Label>
     </Grid>
 </Page>
