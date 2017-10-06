@@ -18,12 +18,11 @@ namespace Dolores.Client.ViewModels
 	    public ICommand ToClientView => new RelayCommand(NavigateToClient);
 
 
-	    public MainWindowViewModel()
+	    public MainWindowViewModel(ClientsListView clientsListView, ClientView clientView)
 	    {
-		    _clientView = new ClientView();
-		    _clientsListView = new ClientsListView();
+		    _clientsListView = clientsListView;
+		    _clientView = clientView;
 		    NavigateToClientsList(null);
-
 	    }
 
 		public void NavigateToClientsList(object param)
@@ -37,7 +36,30 @@ namespace Dolores.Client.ViewModels
 	    }
 
 
-	    public event PropertyChangedEventHandler PropertyChanged;
+		#region UI Events
+
+		private void MenuHome_OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+		{
+			throw new System.NotImplementedException();
+		}
+
+	    private void MenuUserList_OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+	    {
+		    NavigateToClientsList(null);
+	    }
+
+	    private void MenuUser_OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+	    {
+			NavigateToClient(null);
+	    }
+
+	    private void MenuSettings_OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+	    {
+		    throw new System.NotImplementedException();
+	    }
+		#endregion
+
+		public event PropertyChangedEventHandler PropertyChanged;
     }
 
 }

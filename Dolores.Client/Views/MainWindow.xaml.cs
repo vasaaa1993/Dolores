@@ -1,18 +1,5 @@
-﻿using Dolores.Client.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Dolores.Client.ViewModels;
 
 namespace Dolores.Client.Views
@@ -22,14 +9,12 @@ namespace Dolores.Client.Views
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		public MainWindow()
+
+		public MainWindow(MainWindowViewModel mainViewModel)
 		{
 			InitializeComponent();
-			Init();
-		}
-		private void Init()
-		{
-			DataContext = new MainWindowViewModel();
+
+			DataContext = mainViewModel;
 		}
 	}
 }

@@ -4,11 +4,38 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dolores.Client.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="400"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="ClientView">
 
-	<Grid Background="Green">
-		<Label Content="Client View" Padding="100px"></Label>
+	<Grid Background="{StaticResource MaterialDesignPaper}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*"></ColumnDefinition>
+			<ColumnDefinition Width="1*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+
+		<StackPanel Grid.Column="0">
+			<GroupBox Grid.Column="0" Grid.Row="0" Header="Інформація про особу" Margin="16">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="1*"></ColumnDefinition>
+						<ColumnDefinition Width="2*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Image Grid.Column="0" Width="100px" Height="100px" Source="../AppData/Images/default-user.png"/>
+					<StackPanel Grid.Column="1" Orientation="Vertical">
+						<TextBox materialDesign:HintAssist.Hint="Прізвище" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						<TextBlock Text="Ім'я"></TextBlock>
+						<TextBox></TextBox>
+						<TextBlock Text="Побатькові"></TextBlock>
+						<TextBox></TextBox>
+					</StackPanel>
+				</Grid>
+			</GroupBox>
+		</StackPanel>
+
+		<StackPanel Grid.Column="1">
+
+		</StackPanel>
 	</Grid>
 </Page>
