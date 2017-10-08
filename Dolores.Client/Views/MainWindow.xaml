@@ -22,20 +22,6 @@
 		<Rectangle Grid.Column="0" Fill="AliceBlue"/>
 	    <Rectangle Grid.Column="1" Fill="Red"/>
 		<StackPanel Grid.Column="0">
-			<!--<Button Command="{Binding ToClientsListView}">
-				<StackPanel Orientation="Vertical">
-					<TextBlock Foreground="White" Text="{DynamicResource Main.Window.Menu.Home}"></TextBlock>
-				</StackPanel>
-			</Button>
-			<Button Content="Users List"  Command="{Binding ToClientView}">
-				
-			</Button>
-			<Button Content="Client"  Command="{Binding ToClientView}">
-
-			</Button>
-			<Button Content="Settings"  Command="{Binding ToClientView}">
-
-			</Button>-->
 			<ListBox>
 				<ListBoxItem x:Name="menuHome">
 					<StackPanel Orientation="Horizontal">

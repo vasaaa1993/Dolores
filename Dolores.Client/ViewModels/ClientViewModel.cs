@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using Dolores.Client.Models;
+using Microsoft.Win32;
 
 namespace Dolores.Client.ViewModels
 {
@@ -43,8 +44,23 @@ namespace Dolores.Client.ViewModels
 					{
 						Number = "093226520"
 					}
+				},
+				Equimpents = new ObservableCollection<EquipmentParamDto>()
+				{
+					new EquipmentParamDto()
+					{
+						Name = "Інструкція",
+					},
+					new EquipmentParamDto()
+					{
+						Name = "Специфікація"
+					}
 				}
 		    };
 	    }
+
+		public void AddNewFolderPath()
+		{
+		}
     }
 }

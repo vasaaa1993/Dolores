@@ -14,14 +14,14 @@
 			<ColumnDefinition Width="1*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
 		<ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
-			<StackPanel >
+			<StackPanel>
 				<GroupBox Header="Інформація про особу" Margin="16">
 					<Grid>
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="1*"></ColumnDefinition>
+							<ColumnDefinition Width="Auto"></ColumnDefinition>
 							<ColumnDefinition Width="2*"></ColumnDefinition>
 						</Grid.ColumnDefinitions>
-						<Image Grid.Column="0" Width="100px" Height="100px" Source="../AppData/Images/default-user.png"/>
+						<Image Grid.Column="0" Width="100px" Height="100px" Margin="0,0,16,0" Source="../AppData/Images/default-user.png"/>
 						<StackPanel Grid.Column="1" Orientation="Vertical">
 							<TextBox materialDesign:HintAssist.Hint="Прізвище" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.SecondName, Mode=TwoWay}"></TextBox>
 							<TextBox materialDesign:HintAssist.Hint="Ім'я" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.SecondName}"></TextBox>
@@ -55,77 +55,121 @@
 						<TextBox materialDesign:HintAssist.Hint="Номер контракту" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
 						<TextBox materialDesign:HintAssist.Hint="Номер договору із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
 						<TextBox materialDesign:HintAssist.Hint="Номер контракту із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-						<DatePicker VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата заключення договору" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+						<DatePicker HorizontalAlignment="Stretch" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата заключення договору" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 					</StackPanel>
 				</GroupBox>
 
 				<GroupBox Header="Контакти" Margin="16">
 					<StackPanel Orientation="Vertical">
 						<TextBox materialDesign:HintAssist.Hint="Ел. Пошта" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-						<StackPanel Orientation="Horizontal" Visibility="{Binding IsEditMode}">
-							<TextBox HorizontalAlignment="Stretch" materialDesign:HintAssist.Hint="Введіть номер телефону" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-							<Button VerticalAlignment="Center">Додати</Button>
-						</StackPanel>
+						<Grid HorizontalAlignment="Stretch">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="auto"/>
+							</Grid.ColumnDefinitions>
+							<TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Введіть номер телефону" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<Button Grid.Column="1" Padding="5" Margin="5,0">
+								<Button.Content>
+									<materialDesign:PackIcon Kind="PlusCircleOutline" Width="20px" Height="20px"/>
+								</Button.Content>
+							</Button>
+						</Grid>
 						<ScrollViewer VerticalScrollBarVisibility="Auto">
-							<ItemsControl ItemsSource="{Binding Client.Phones}">
-								<ItemsControl.ItemsPanel>
-									<ItemsPanelTemplate>
-										<WrapPanel/>
-									</ItemsPanelTemplate>
-								</ItemsControl.ItemsPanel>
-								<ItemsControl.ItemTemplate>
-									<DataTemplate>
-										<materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1"  Margin="5">
-											<StackPanel Orientation="Horizontal">
-												<TextBlock VerticalAlignment="Center" Text="{Binding Number}" Margin="5,0,5,0"></TextBlock>
-												<Button VerticalAlignment="Stretch"  Width="20" Height="30" Background="#FF5722" Padding="0,5,0,5"></Button>
-											</StackPanel>
-										</materialDesign:Card>
-									</DataTemplate>
-								</ItemsControl.ItemTemplate>
-							</ItemsControl>
+							<StackPanel>
+								<ItemsControl ItemsSource="{Binding Client.Phones}">
+									<ItemsControl.ItemsPanel>
+										<ItemsPanelTemplate>
+											<WrapPanel/>
+										</ItemsPanelTemplate>
+									</ItemsControl.ItemsPanel>
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1"  Margin="5">
+												<StackPanel Orientation="Horizontal">
+													<TextBlock VerticalAlignment="Center" Text="{Binding Number}" Margin="5,0,5,0"></TextBlock>
+													<Button Padding="5" HorizontalContentAlignment="Center">
+														<Button.Content>
+															<materialDesign:PackIcon ToolTip="Видалити" Kind="Delete" Width="20px" Height="20px"/>
+														</Button.Content>
+													</Button>
+												</StackPanel>
+											</materialDesign:Card>
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ItemsControl>
+							</StackPanel>
 						</ScrollViewer>
-						<!--<ScrollViewer VerticalScrollBarVisibility="Auto">
-						<ItemsControl ItemsSource="{Binding Path = Person.Phones, Mode = TwoWay}">
-							<ItemsControl.ItemsPanel>
-								<ItemsPanelTemplate>
-									<WrapPanel />
-								</ItemsPanelTemplate>
-							</ItemsControl.ItemsPanel>
-							<ItemsControl.ItemTemplate>
-								<DataTemplate>
-									<Border Background="GhostWhite" BorderBrush="Silver" BorderThickness="1" Padding="3" Margin="4" CornerRadius="3,3,3,3">
-										<TextBox Background="{Binding Path=Tag.TextBoxBackgroundColor, RelativeSource={RelativeSource  AncestorType={x:Type ItemsControl}}}" 
-										         BorderBrush="{Binding Path=Tag.TextBoxBorderColor, RelativeSource={RelativeSource  AncestorType={x:Type ItemsControl}}}"
-										         IsReadOnly="{Binding Path=Tag.IsReadOnly, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" 
-										         Text="{Binding Path = Number, Mode = TwoWay}"></TextBox>
-									</Border>
-								</DataTemplate>
-							</ItemsControl.ItemTemplate>
-						</ItemsControl>
-					</ScrollViewer>-->
 					</StackPanel>
 				</GroupBox>
 			</StackPanel>
 		</ScrollViewer>
 		
-		<!--private bool _isActive;
-		private DateTime _lastContactTime;
-		-->
 		<ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
 			<StackPanel>
 				<GroupBox Header="Різне" Margin="16">
 					<StackPanel Orientation="Vertical">
 						<TextBox Style="{StaticResource MaterialDesignTextFieldBoxTextBox}"
 						         VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Примітки" />
+						<DatePicker HorizontalAlignment="Stretch" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата останнього зв'язку" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+						<Button Content="Папка користувача" Margin="0,5,0,0"></Button>
 					</StackPanel>
 				</GroupBox>
 
 				<GroupBox Header="Обладанання" Margin="16">
 					<StackPanel Orientation="Vertical">
-						<TextBox materialDesign:HintAssist.Hint="Ел. Пошта" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-						<TextBox materialDesign:HintAssist.Hint="Номер договору із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-						<TextBox materialDesign:HintAssist.Hint="Номер контракту із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Модель обладнання" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						
+						<Grid HorizontalAlignment="Stretch" Margin="10">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="Auto"/>
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+							<TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Введіть назву" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<Button Grid.Column="1" Padding="5" Margin="5,0">
+								<Button.Content>
+									<materialDesign:PackIcon Kind="Folder" Width="20px" Height="20px"/>
+								</Button.Content>
+							</Button>
+							<Button Grid.Column="2" Padding="5" Margin="5,0" IsEnabled="False">
+								<Button.Content>
+									<materialDesign:PackIcon Kind="PlusCircleOutline" Width="20px" Height="20px"/>
+								</Button.Content>
+							</Button>
+						</Grid>
+						<ScrollViewer VerticalScrollBarVisibility="Auto">
+							<ItemsControl ItemsSource="{Binding Client.Equimpents}">
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel Orientation="Vertical"/>
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1"  Margin="5" Padding="5">
+											<Grid HorizontalAlignment="Stretch">
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="*"/>
+													<ColumnDefinition Width="Auto"/>
+													<ColumnDefinition Width="Auto"/>
+												</Grid.ColumnDefinitions>
+												<TextBox Grid.Column="0" VerticalAlignment="Stretch" Text="{Binding Name}" Margin="5,0,5,0"></TextBox>
+												<Button Grid.Column="1" Margin="5,0" Padding="5">
+													<Button.Content>
+														<materialDesign:PackIcon ToolTip="Змінити прикріплену папку" Kind="Folder" Width="20px" Height="20px"/>
+													</Button.Content>
+												</Button>
+												<Button Grid.Column="2" Margin="5,0" Padding="5" HorizontalContentAlignment="Center">
+													<Button.Content>
+														<materialDesign:PackIcon ToolTip="Видалити" Kind="Delete" Width="20px" Height="20px"/>
+													</Button.Content>
+												</Button>
+											</Grid>
+										</materialDesign:Card>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</ScrollViewer>
 					</StackPanel>
 				</GroupBox>
 			</StackPanel>
