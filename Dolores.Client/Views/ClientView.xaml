@@ -6,36 +6,130 @@
       xmlns:local="clr-namespace:Dolores.Client.Views"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="900" d:DesignWidth="800"
       Title="ClientView">
-
 	<Grid Background="{StaticResource MaterialDesignPaper}">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="1*"></ColumnDefinition>
 			<ColumnDefinition Width="1*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
+		<ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+			<StackPanel >
+				<GroupBox Header="Інформація про особу" Margin="16">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="1*"></ColumnDefinition>
+							<ColumnDefinition Width="2*"></ColumnDefinition>
+						</Grid.ColumnDefinitions>
+						<Image Grid.Column="0" Width="100px" Height="100px" Source="../AppData/Images/default-user.png"/>
+						<StackPanel Grid.Column="1" Orientation="Vertical">
+							<TextBox materialDesign:HintAssist.Hint="Прізвище" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.SecondName, Mode=TwoWay}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Ім'я" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.SecondName}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Побатькові" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						</StackPanel>
+					</Grid>
+				</GroupBox>
+				<GroupBox Header="Адреса" Margin="16">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="1*"/>
+							<ColumnDefinition Width="1*"/>
+						</Grid.ColumnDefinitions>
 
-		<StackPanel Grid.Column="0">
-			<GroupBox Grid.Column="0" Grid.Row="0" Header="Інформація про особу" Margin="16">
-				<Grid>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="1*"></ColumnDefinition>
-						<ColumnDefinition Width="2*"></ColumnDefinition>
-					</Grid.ColumnDefinitions>
-					<Image Grid.Column="0" Width="100px" Height="100px" Source="../AppData/Images/default-user.png"/>
-					<StackPanel Grid.Column="1" Orientation="Vertical">
-						<TextBox materialDesign:HintAssist.Hint="Прізвище" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-						<TextBlock Text="Ім'я"></TextBlock>
-						<TextBox></TextBox>
-						<TextBlock Text="Побатькові"></TextBlock>
-						<TextBox></TextBox>
+						<StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,5,0">
+							<TextBox materialDesign:HintAssist.Hint="Область" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Район" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Населений пункт" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						</StackPanel>
+
+						<StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,0,0">
+							<TextBox materialDesign:HintAssist.Hint="Вулиця" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Будинок" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Квартира" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						</StackPanel>
+					</Grid>
+				</GroupBox>
+
+				<GroupBox Header="Інформація про договори" Margin="16">
+					<StackPanel Orientation="Vertical">
+						<TextBox materialDesign:HintAssist.Hint="Номер контракту" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Номер договору із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Номер контракту із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						<DatePicker VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата заключення договору" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 					</StackPanel>
-				</Grid>
-			</GroupBox>
-		</StackPanel>
+				</GroupBox>
 
-		<StackPanel Grid.Column="1">
+				<GroupBox Header="Контакти" Margin="16">
+					<StackPanel Orientation="Vertical">
+						<TextBox materialDesign:HintAssist.Hint="Ел. Пошта" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						<StackPanel Orientation="Horizontal" Visibility="{Binding IsEditMode}">
+							<TextBox HorizontalAlignment="Stretch" materialDesign:HintAssist.Hint="Введіть номер телефону" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<Button VerticalAlignment="Center">Додати</Button>
+						</StackPanel>
+						<ScrollViewer VerticalScrollBarVisibility="Auto">
+							<ItemsControl ItemsSource="{Binding Client.Phones}">
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<WrapPanel/>
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1"  Margin="5">
+											<StackPanel Orientation="Horizontal">
+												<TextBlock VerticalAlignment="Center" Text="{Binding Number}" Margin="5,0,5,0"></TextBlock>
+												<Button VerticalAlignment="Stretch"  Width="20" Height="30" Background="#FF5722" Padding="0,5,0,5"></Button>
+											</StackPanel>
+										</materialDesign:Card>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</ScrollViewer>
+						<!--<ScrollViewer VerticalScrollBarVisibility="Auto">
+						<ItemsControl ItemsSource="{Binding Path = Person.Phones, Mode = TwoWay}">
+							<ItemsControl.ItemsPanel>
+								<ItemsPanelTemplate>
+									<WrapPanel />
+								</ItemsPanelTemplate>
+							</ItemsControl.ItemsPanel>
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<Border Background="GhostWhite" BorderBrush="Silver" BorderThickness="1" Padding="3" Margin="4" CornerRadius="3,3,3,3">
+										<TextBox Background="{Binding Path=Tag.TextBoxBackgroundColor, RelativeSource={RelativeSource  AncestorType={x:Type ItemsControl}}}" 
+										         BorderBrush="{Binding Path=Tag.TextBoxBorderColor, RelativeSource={RelativeSource  AncestorType={x:Type ItemsControl}}}"
+										         IsReadOnly="{Binding Path=Tag.IsReadOnly, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" 
+										         Text="{Binding Path = Number, Mode = TwoWay}"></TextBox>
+									</Border>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+					</ScrollViewer>-->
+					</StackPanel>
+				</GroupBox>
+			</StackPanel>
+		</ScrollViewer>
+		
+		<!--private bool _isActive;
+		private DateTime _lastContactTime;
+		-->
+		<ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+			<StackPanel>
+				<GroupBox Header="Різне" Margin="16">
+					<StackPanel Orientation="Vertical">
+						<TextBox Style="{StaticResource MaterialDesignTextFieldBoxTextBox}"
+						         VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Примітки" />
+					</StackPanel>
+				</GroupBox>
 
-		</StackPanel>
+				<GroupBox Header="Обладанання" Margin="16">
+					<StackPanel Orientation="Vertical">
+						<TextBox materialDesign:HintAssist.Hint="Ел. Пошта" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Номер договору із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Номер контракту із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+					</StackPanel>
+				</GroupBox>
+			</StackPanel>
+		</ScrollViewer>
 	</Grid>
+
 </Page>

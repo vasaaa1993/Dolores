@@ -106,6 +106,7 @@
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\EquipmentService.cs" />
     <Compile Include="Services\Interfaces\IClientService.cs" />
+    <Compile Include="ViewModels\BaseViewModelcs.cs" />
     <Compile Include="ViewModels\ClientsListViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
