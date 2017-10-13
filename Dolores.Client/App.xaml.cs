@@ -29,6 +29,7 @@ namespace Dolores.Client
 			container.Bind<MainWindow>().ToSelf();
 			container.Bind<ClientView>().ToSelf();
 			container.Bind<ClientsListView>().ToSelf();
+			container.Bind<SelectFolderViewModel>().ToSelf();
 		}
 
 		private void ComposeObjects()

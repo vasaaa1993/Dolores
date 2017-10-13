@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Common\SelectFolderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +102,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Converters\HeaderToImageConverter.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ClientDto.cs" />
     <Compile Include="Models\EquipmentParamDto.cs" />
@@ -106,7 +111,7 @@
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\EquipmentService.cs" />
     <Compile Include="Services\Interfaces\IClientService.cs" />
-    <Compile Include="ViewModels\BaseViewModelcs.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ClientsListViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -116,6 +121,10 @@
     <Compile Include="Views\ClientView.xaml.cs">
       <DependentUpon>ClientView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Common\SelectFolderView.xaml.cs">
+      <DependentUpon>SelectFolderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SelectFolderViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -156,6 +165,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="AppData\Images\default-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppData\Images\disk.png" />
+    <Resource Include="AppData\Images\file.png" />
+    <Resource Include="AppData\Images\folder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.2.0.0\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" />

@@ -34,12 +34,18 @@
 				</ListBoxItem>
 				<ListBoxItem x:Name="menuUserList">
 					<StackPanel Orientation="Horizontal">
+						<StackPanel.InputBindings>
+							<MouseBinding MouseAction="LeftClick" Command="{Binding ToClientView}"/>
+						</StackPanel.InputBindings>
 						<materialDesign:PackIcon Kind="AccountMultiple" Width="20px" Height="20px" Margin="0,0,10,0"/>
 						<TextBlock Text="Users List" VerticalAlignment="Center"></TextBlock>
 					</StackPanel>
 				</ListBoxItem>
 				<ListBoxItem x:Name="menuUser">
 					<StackPanel Orientation="Horizontal">
+						<StackPanel.InputBindings>
+							<MouseBinding MouseAction="LeftClick" Command="{Binding ShowSelectFolderDlg}"/>
+						</StackPanel.InputBindings>
 						<materialDesign:PackIcon Kind="Account" Width="20px" Height="20px" Margin="0,0,10,0"/>
 						<TextBlock Text="User" VerticalAlignment="Center"></TextBlock>
 					</StackPanel>

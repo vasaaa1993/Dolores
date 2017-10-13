@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="800"
       Title="ClientView">
-	<Grid Background="{StaticResource MaterialDesignPaper}">
+	<Grid Name="ClientViewRoot" Background="{StaticResource MaterialDesignPaper}">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="1*"></ColumnDefinition>
 			<ColumnDefinition Width="1*"></ColumnDefinition>
@@ -25,7 +25,7 @@
 						<StackPanel Grid.Column="1" Orientation="Vertical">
 							<TextBox materialDesign:HintAssist.Hint="Прізвище" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.SecondName, Mode=TwoWay}"></TextBox>
 							<TextBox materialDesign:HintAssist.Hint="Ім'я" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.SecondName}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Побатькові" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="По батькові" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
 						</StackPanel>
 					</Grid>
 				</GroupBox>
@@ -67,9 +67,9 @@
 								<ColumnDefinition Width="*"/>
 								<ColumnDefinition Width="auto"/>
 							</Grid.ColumnDefinitions>
-							<TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Введіть номер телефону" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-							<Button Grid.Column="1" Padding="5" Margin="5,0">
-								<Button.Content>
+							<TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Введіть номер телефону" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding NewPhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+							<Button Grid.Column="1" Padding="5" Margin="5,0" Command="{Binding AddNewPhoneNumberCommand}">
+								<Button.Content >
 									<materialDesign:PackIcon Kind="PlusCircleOutline" Width="20px" Height="20px"/>
 								</Button.Content>
 							</Button>
@@ -87,7 +87,7 @@
 											<materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1"  Margin="5">
 												<StackPanel Orientation="Horizontal">
 													<TextBlock VerticalAlignment="Center" Text="{Binding Number}" Margin="5,0,5,0"></TextBlock>
-													<Button Padding="5" HorizontalContentAlignment="Center">
+													<Button Padding="5" HorizontalContentAlignment="Center" Command="{Binding ElementName=ClientViewRoot, Path=DataContext.DeletePhoneCommand}" CommandParameter="{Binding Number}">
 														<Button.Content>
 															<materialDesign:PackIcon ToolTip="Видалити" Kind="Delete" Width="20px" Height="20px"/>
 														</Button.Content>

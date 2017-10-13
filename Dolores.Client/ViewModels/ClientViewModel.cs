@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Input;
+using Dolores.Client.Commands;
 using Dolores.Client.Models;
 using Microsoft.Win32;
 
 namespace Dolores.Client.ViewModels
 {
-    class ClientViewModel: BaseViewModelcs
+    class ClientViewModel: BaseViewModel
 	{
 	    public ClientDto Client { get; set; }
-
 		public bool IsEditMode { get; set; }
+		public string NewPhoneNumber { get; set; }
+		public ICommand AddNewPhoneNumberCommand => new RelayCommand(AddNewPhoneNumber, (obj) => { return !string.IsNullOrEmpty(NewPhoneNumber); });
+		public ICommand DeletePhoneCommand => new RelayCommand(DeletePhone);
 
 		public ClientViewModel()
 		{
@@ -59,8 +64,21 @@ namespace Dolores.Client.ViewModels
 		    };
 	    }
 
-		public void AddNewFolderPath()
+		public void AddNewPhoneNumber(object param)
 		{
+			Client.Phones.Add(new PhoneDto(){ Number = NewPhoneNumber});
+			NewPhoneNumber = "";
+		}
+
+		public void DeletePhone(object phone)
+		{
+			var ph = phone as string;
+			var findedPhone = Client.Phones.FirstOrDefault(p => p.Number == ph);
+
+			if (findedPhone != null)
+			{
+				Client.Phones.Remove(findedPhone);
+			}
 		}
     }
 }
