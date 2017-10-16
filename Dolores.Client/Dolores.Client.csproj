@@ -102,6 +102,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Converters\DateTimeToStringConverter.cs" />
     <Compile Include="Converters\HeaderToImageConverter.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ClientDto.cs" />
@@ -170,6 +171,10 @@
     <Resource Include="AppData\Images\disk.png" />
     <Resource Include="AppData\Images\file.png" />
     <Resource Include="AppData\Images\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppData\Images\angry.png" />
+    <Content Include="AppData\Images\angry.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.2.0.0\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" />

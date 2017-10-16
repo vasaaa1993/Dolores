@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using Dolores.Client.Commands;
 using Dolores.Client.Models;
@@ -13,6 +14,8 @@ namespace Dolores.Client.ViewModels
 	    public ClientDto Client { get; set; }
 		public bool IsEditMode { get; set; }
 		public string NewPhoneNumber { get; set; }
+		public string NewFolderName { get; set; }
+		public string NewFolderPath { get; set; }
 		public ICommand AddNewPhoneNumberCommand => new RelayCommand(AddNewPhoneNumber, (obj) => { return !string.IsNullOrEmpty(NewPhoneNumber); });
 		public ICommand DeletePhoneCommand => new RelayCommand(DeletePhone);
 
@@ -70,6 +73,11 @@ namespace Dolores.Client.ViewModels
 			NewPhoneNumber = "";
 		}
 
+		public void AddNewFolder(object param)
+		{
+			
+		}
+
 		public void DeletePhone(object phone)
 		{
 			var ph = phone as string;
@@ -80,5 +88,6 @@ namespace Dolores.Client.ViewModels
 				Client.Phones.Remove(findedPhone);
 			}
 		}
+		
     }
 }

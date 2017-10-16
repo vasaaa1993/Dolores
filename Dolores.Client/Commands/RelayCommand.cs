@@ -16,12 +16,12 @@ namespace Dolores.Client.Commands
 		    _canExecute = canExecute;
 	    }
 
-	    public bool CanExecute(object parameter)
+	    public bool CanExecute(object parameter = null)
 	    {
 		    return (_canExecute == null) ? true : _canExecute(parameter);
 	    }
 
-	    public void Execute(object parameter)
+	    public void Execute(object parameter = null)
 	    {
 		    _execure.Invoke(parameter);
 	    }

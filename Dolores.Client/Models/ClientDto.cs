@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using Microsoft.VisualBasic;
 
 namespace Dolores.Client.Models
 {
@@ -269,6 +270,8 @@ namespace Dolores.Client.Models
 
 		public bool IsActive { get; set; }
 
+		public bool IsСonflict { get; set; }
+
 		public int Distance { get; set; }
 
 		public string Email { get; set; }
@@ -294,6 +297,8 @@ namespace Dolores.Client.Models
 		public DateTime LastContactTime { get; set; }
 
 		public DateTime DateOfContract { get; set; }
+
+		public DateTime DateOfContractContinuation { get; set; }
 
 		public string GasSealNumber { get; set; }
 

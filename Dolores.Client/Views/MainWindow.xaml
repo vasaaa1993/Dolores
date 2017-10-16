@@ -35,7 +35,7 @@
 				<ListBoxItem x:Name="menuUserList">
 					<StackPanel Orientation="Horizontal">
 						<StackPanel.InputBindings>
-							<MouseBinding MouseAction="LeftClick" Command="{Binding ToClientView}"/>
+							<MouseBinding MouseAction="LeftClick" Command="{Binding ToClientsListView}"/>
 						</StackPanel.InputBindings>
 						<materialDesign:PackIcon Kind="AccountMultiple" Width="20px" Height="20px" Margin="0,0,10,0"/>
 						<TextBlock Text="Users List" VerticalAlignment="Center"></TextBlock>
