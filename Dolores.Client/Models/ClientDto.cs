@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Data.Common;
 using Microsoft.VisualBasic;
 
 namespace Dolores.Client.Models
@@ -307,6 +308,8 @@ namespace Dolores.Client.Models
 		public string ContractNumber { get; set; }
 
 		public string Description { get; set; }
+
+		public string EquipmentModel { get; set; }
 
 		#endregion
 

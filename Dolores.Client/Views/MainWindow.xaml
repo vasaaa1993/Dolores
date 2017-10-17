@@ -24,28 +24,28 @@
 		<StackPanel Grid.Column="0">
 			<ListBox>
 				<ListBoxItem x:Name="menuHome">
+					<ListBoxItem.InputBindings>
+						<MouseBinding MouseAction="LeftClick" Command="{Binding ToClientView}"/>
+					</ListBoxItem.InputBindings>
 					<StackPanel Orientation="Horizontal">
-						<StackPanel.InputBindings>
-							<MouseBinding MouseAction="LeftClick" Command="{Binding ToClientView}"/>
-						</StackPanel.InputBindings>
 						<materialDesign:PackIcon Kind="Home" Width="20px" Height="20px" Margin="0,0,10,0"/>
 						<TextBlock Text="{DynamicResource Main.Window.Menu.Home}" VerticalAlignment="Center"></TextBlock>
 					</StackPanel>
 				</ListBoxItem>
 				<ListBoxItem x:Name="menuUserList">
+					<ListBoxItem.InputBindings>
+						<MouseBinding MouseAction="LeftClick" Command="{Binding ToClientsListView}"/>
+					</ListBoxItem.InputBindings>
 					<StackPanel Orientation="Horizontal">
-						<StackPanel.InputBindings>
-							<MouseBinding MouseAction="LeftClick" Command="{Binding ToClientsListView}"/>
-						</StackPanel.InputBindings>
 						<materialDesign:PackIcon Kind="AccountMultiple" Width="20px" Height="20px" Margin="0,0,10,0"/>
 						<TextBlock Text="Users List" VerticalAlignment="Center"></TextBlock>
 					</StackPanel>
 				</ListBoxItem>
 				<ListBoxItem x:Name="menuUser">
+					<ListBoxItem.InputBindings>
+						<MouseBinding MouseAction="LeftClick" Command="{Binding ShowSelectFolderDlg}"/>
+					</ListBoxItem.InputBindings>
 					<StackPanel Orientation="Horizontal">
-						<StackPanel.InputBindings>
-							<MouseBinding MouseAction="LeftClick" Command="{Binding ShowSelectFolderDlg}"/>
-						</StackPanel.InputBindings>
 						<materialDesign:PackIcon Kind="Account" Width="20px" Height="20px" Margin="0,0,10,0"/>
 						<TextBlock Text="User" VerticalAlignment="Center"></TextBlock>
 					</StackPanel>

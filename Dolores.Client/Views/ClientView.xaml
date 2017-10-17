@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dolores.Client.Views"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:converter="clr-namespace:Dolores.Client.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="800"
       Title="ClientView">
@@ -28,8 +29,8 @@
 						<Image Grid.Column="0" Width="100px" Height="100px" Margin="0,0,16,0" Source="../AppData/Images/default-user.png"/>
 						<StackPanel Grid.Column="1" Orientation="Vertical">
 							<TextBox materialDesign:HintAssist.Hint="Прізвище" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.SecondName, Mode=TwoWay}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Ім'я" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.SecondName}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="По батькові" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Ім'я" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.FirstName}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="По батькові" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.MiddleName}"></TextBox>
 						</StackPanel>
 					</Grid>
 				</GroupBox>
@@ -41,31 +42,31 @@
 						</Grid.ColumnDefinitions>
 
 						<StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,5,0">
-							<TextBox materialDesign:HintAssist.Hint="Область" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Район" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Населений пункт" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Область" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Region}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Район" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.District}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Населений пункт" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Town}"></TextBox>
 						</StackPanel>
 
 						<StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,0,0">
-							<TextBox materialDesign:HintAssist.Hint="Вулиця" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Будинок" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Квартира" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Вулиця" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Street}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Будинок" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Building}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Квартира" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Apartment}"></TextBox>
 						</StackPanel>
 					</Grid>
 				</GroupBox>
 
 				<GroupBox Header="Інформація про договори" Margin="16">
 					<StackPanel Orientation="Vertical">
-						<TextBox materialDesign:HintAssist.Hint="Номер контракту" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-						<TextBox materialDesign:HintAssist.Hint="Номер договору із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-						<TextBox materialDesign:HintAssist.Hint="Номер контракту із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-						<DatePicker HorizontalAlignment="Stretch" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата заключення договору" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+						<TextBox materialDesign:HintAssist.Hint="Номер контракту" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.ContractNumber}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Номер договору із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.GasSealNumber}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Номер контракту із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.GasServiceContractNumber}"></TextBox>
+						<DatePicker HorizontalAlignment="Stretch" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата заключення договору" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding Client.DateOfContract}"/>
 					</StackPanel>
 				</GroupBox>
 
 				<GroupBox Header="Контакти" Margin="16">
 					<StackPanel Orientation="Vertical">
-						<TextBox materialDesign:HintAssist.Hint="Ел. Пошта" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Ел. Пошта" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Email}"></TextBox>
 						<Grid HorizontalAlignment="Stretch">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="*"/>
@@ -113,6 +114,7 @@
 				<GroupBox Header="Різне" Margin="16">
 					<StackPanel Orientation="Vertical">
 						<TextBox Style="{StaticResource MaterialDesignTextFieldBoxTextBox}"
+						         Text="{Binding Client.Description}"
 						         VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Примітки" />
 						<Button Content="Папка користувача" Margin="0,5,0,0"></Button>
 					</StackPanel>
@@ -120,7 +122,7 @@
 
 				<GroupBox Header="Обладанання" Margin="16">
 					<StackPanel Orientation="Vertical">
-						<TextBox materialDesign:HintAssist.Hint="Модель обладнання" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Модель обладнання" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Text="{Binding Client.EquipmentModel}"></TextBox>
 						
 						<Grid HorizontalAlignment="Stretch" Margin="10">
 							<Grid.ColumnDefinitions>
@@ -178,13 +180,33 @@
 			</StackPanel>
 		</ScrollViewer>
 		<Border Grid.Row="1" Grid.ColumnSpan="2" Margin="0 16 0 0" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" />
-		<StackPanel Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Stretch" Margin="16">
-			<DatePicker Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата останнього зв'язку" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+		<StackPanel Grid.Row="1" Grid.Column="0" Margin="16" VerticalAlignment="Bottom" Orientation="Horizontal">
+			<Button Command="{Binding StartEditingCommand}" Visibility="{Binding IsEditMode, Converter={x:Static converter:InverseBoolToVisibleConverter.Instance}}" Margin="0,0,5,0">
+				<StackPanel Orientation="Horizontal">
+					<materialDesign:PackIcon VerticalAlignment="Bottom" Kind="Pencil" Margin="0,0,5,0"/>
+					<TextBlock Text="Редагувати"></TextBlock>
+				</StackPanel>
+			</Button>
+			<Button Command="{Binding CancelEditingCommand}" Visibility="{Binding IsEditMode, Converter={x:Static converter:BoolToVisibilityConverter.Instance}}" Margin="0,0,5,0">
+				<StackPanel Orientation="Horizontal">
+					<materialDesign:PackIcon VerticalAlignment="Bottom" Kind="CloseCircleOutline" Margin="0,0,5,0"/>
+					<TextBlock Text="Відмінити"></TextBlock>
+				</StackPanel>
+			</Button>
+			<Button Command="{Binding SaveChangesCommand}" Visibility="{Binding IsEditMode, Converter={x:Static converter:BoolToVisibilityConverter.Instance}}">
+				<StackPanel Orientation="Horizontal">
+					<materialDesign:PackIcon VerticalAlignment="Bottom" Kind="ContentSave" Margin="0,0,5,0"/>
+					<TextBlock Text="Зберегти"></TextBlock>
+				</StackPanel>
+			</Button>
 		</StackPanel>
-		<StackPanel Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Right" Margin="16" Orientation="Horizontal">
-			<TextBlock Text="Активний користувач" VerticalAlignment="Bottom" Margin="0,0,16,2"></TextBlock>
-			<ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Bottom"  Command=""/>
-		</StackPanel>
+		<DockPanel Grid.Row="1" Grid.Column="1" Margin="16">
+			<DatePicker DockPanel.Dock="Left" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата останнього зв'язку" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding Client.DateOfContract}"/>
+			<StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+				<TextBlock Text="Активний користувач" VerticalAlignment="Bottom" Margin="0,0,16,2"></TextBlock>
+				<ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Bottom" IsChecked="{Binding Client.IsActive}"/>
+			</StackPanel>
+		</DockPanel>
 	</Grid>
 
 </Page>

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 using Dolores.Client.Commands;
 using Dolores.Client.Models;
-using Microsoft.Win32;
 
 namespace Dolores.Client.ViewModels
 {
@@ -13,17 +11,24 @@ namespace Dolores.Client.ViewModels
 	{
 	    public ClientDto Client { get; set; }
 		public bool IsEditMode { get; set; }
+
 		public string NewPhoneNumber { get; set; }
 		public string NewFolderName { get; set; }
 		public string NewFolderPath { get; set; }
+
 		public ICommand AddNewPhoneNumberCommand => new RelayCommand(AddNewPhoneNumber, (obj) => { return !string.IsNullOrEmpty(NewPhoneNumber); });
 		public ICommand DeletePhoneCommand => new RelayCommand(DeletePhone);
+		public ICommand StartEditingCommand => new RelayCommand(StartEditing);
+		public ICommand CancelEditingCommand => new RelayCommand(CancelEditing);
+		public ICommand SaveChangesCommand => new RelayCommand(SaveChanges);
 
 		public ClientViewModel()
 		{
-			IsEditMode = true;
+			IsEditMode = false;
 		    Client = new ClientDto()
 		    {
+				IsActive = false,
+
 			    FirstName = "Василь",
 			    SecondName = "Барна",
 			    MiddleName = "Олегович",
@@ -32,7 +37,7 @@ namespace Dolores.Client.ViewModels
 			    Town = "Білобожниця",
 			    Street = "Шевченка",
 			    Building = "5",
-			    Apartment = "",
+			    Apartment = "0",
 
 			    Email = "vasaaa1993@gmail.com",
 			    LastContactTime = DateTime.Now,
@@ -67,15 +72,32 @@ namespace Dolores.Client.ViewModels
 		    };
 	    }
 
-		public void AddNewPhoneNumber(object param)
-		{
-			Client.Phones.Add(new PhoneDto(){ Number = NewPhoneNumber});
-			NewPhoneNumber = "";
-		}
+		
 
-		public void AddNewFolder(object param)
+		public void AddNewFolder()
 		{
 			
+		}
+
+		public void StartEditing(object param)
+		{
+			IsEditMode = true;
+		}
+
+		public void CancelEditing(object param)
+		{
+			IsEditMode = false;
+		}
+
+		public void SaveChanges(object param)
+		{
+			IsEditMode = false;
+		}
+
+		public void AddNewPhoneNumber(object param)
+		{
+			Client.Phones.Add(new PhoneDto() { Number = NewPhoneNumber });
+			NewPhoneNumber = "";
 		}
 
 		public void DeletePhone(object phone)
