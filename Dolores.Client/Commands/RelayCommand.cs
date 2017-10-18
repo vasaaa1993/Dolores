@@ -7,18 +7,18 @@ namespace Dolores.Client.Commands
     {
 	    private readonly Action<object> _execure;
 	    private readonly Predicate<object> _canExecute;
-	    public RelayCommand(Action<object> execure, Predicate<object> canExecute = null)
+	    public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
 	    {
-			if(execure == null)
+			if(execute == null)
 				throw  new NullReferenceException("execute");
 
-			_execure = execure;
+			_execure = execute;
 		    _canExecute = canExecute;
 	    }
 
 	    public bool CanExecute(object parameter = null)
 	    {
-		    return (_canExecute == null) ? true : _canExecute(parameter);
+		    return _canExecute?.Invoke(parameter) ?? true;
 	    }
 
 	    public void Execute(object parameter = null)

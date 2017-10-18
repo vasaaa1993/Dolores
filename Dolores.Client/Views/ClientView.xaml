@@ -28,9 +28,9 @@
 						</Grid.ColumnDefinitions>
 						<Image Grid.Column="0" Width="100px" Height="100px" Margin="0,0,16,0" Source="../AppData/Images/default-user.png"/>
 						<StackPanel Grid.Column="1" Orientation="Vertical">
-							<TextBox materialDesign:HintAssist.Hint="Прізвище" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.SecondName, Mode=TwoWay}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Ім'я" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.FirstName}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="По батькові" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.MiddleName}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Прізвище" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.SecondName, Mode=TwoWay}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Ім'я" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.FirstName}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="По батькові" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.MiddleName}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
 						</StackPanel>
 					</Grid>
 				</GroupBox>
@@ -40,34 +40,33 @@
 							<ColumnDefinition Width="1*"/>
 							<ColumnDefinition Width="1*"/>
 						</Grid.ColumnDefinitions>
-
 						<StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,5,0">
-							<TextBox materialDesign:HintAssist.Hint="Область" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Region}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Район" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.District}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Населений пункт" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Town}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Область" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Region}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Район" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.District}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Населений пункт" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Town}"  IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
 						</StackPanel>
 
 						<StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,0,0">
-							<TextBox materialDesign:HintAssist.Hint="Вулиця" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Street}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Будинок" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Building}"></TextBox>
-							<TextBox materialDesign:HintAssist.Hint="Квартира" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Apartment}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Вулиця" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Street}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Будинок" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Building}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
+							<TextBox materialDesign:HintAssist.Hint="Квартира" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Apartment}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
 						</StackPanel>
 					</Grid>
 				</GroupBox>
 
 				<GroupBox Header="Інформація про договори" Margin="16">
 					<StackPanel Orientation="Vertical">
-						<TextBox materialDesign:HintAssist.Hint="Номер контракту" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.ContractNumber}"></TextBox>
-						<TextBox materialDesign:HintAssist.Hint="Номер договору із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.GasSealNumber}"></TextBox>
-						<TextBox materialDesign:HintAssist.Hint="Номер контракту із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.GasServiceContractNumber}"></TextBox>
-						<DatePicker HorizontalAlignment="Stretch" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата заключення договору" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding Client.DateOfContract}"/>
+						<TextBox materialDesign:HintAssist.Hint="Номер контракту" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.ContractNumber}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Номер договору із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.GasSealNumber}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
+						<TextBox materialDesign:HintAssist.Hint="Номер контракту із газовою службою" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.GasServiceContractNumber}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
+						<DatePicker HorizontalAlignment="Stretch" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата заключення договору" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding Client.DateOfContract}" IsEnabled="{Binding IsEditMode}"/>
 					</StackPanel>
 				</GroupBox>
 
 				<GroupBox Header="Контакти" Margin="16">
 					<StackPanel Orientation="Vertical">
-						<TextBox materialDesign:HintAssist.Hint="Ел. Пошта" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Email}"></TextBox>
-						<Grid HorizontalAlignment="Stretch">
+						<TextBox materialDesign:HintAssist.Hint="Ел. Пошта" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Client.Email}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"></TextBox>
+						<Grid HorizontalAlignment="Stretch" Visibility="{Binding IsEditMode, Converter={x:Static converter:BoolToVisibilityConverter.Instance}}">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="*"/>
 								<ColumnDefinition Width="auto"/>
@@ -114,17 +113,18 @@
 				<GroupBox Header="Різне" Margin="16">
 					<StackPanel Orientation="Vertical">
 						<TextBox Style="{StaticResource MaterialDesignTextFieldBoxTextBox}"
-						         Text="{Binding Client.Description}"
+						         IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"
+								 Text="{Binding Client.Description}"
 						         VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Примітки" />
-						<Button Content="Папка користувача" Margin="0,5,0,0"></Button>
+						<Button Content="Папка користувача" Margin="0,5,0,0" Command="{Binding OpenClientFolderCommand}"/>
 					</StackPanel>
 				</GroupBox>
 
 				<GroupBox Header="Обладанання" Margin="16">
 					<StackPanel Orientation="Vertical">
-						<TextBox materialDesign:HintAssist.Hint="Модель обладнання" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Text="{Binding Client.EquipmentModel}"></TextBox>
-						
-						<Grid HorizontalAlignment="Stretch" Margin="10">
+						<TextBox materialDesign:HintAssist.Hint="Модель обладнання" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Text="{Binding Client.EquipmentModel}" IsReadOnly="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"/>
+
+						<Grid HorizontalAlignment="Stretch" Margin="10" Visibility="{Binding IsEditMode, Converter={x:Static converter:BoolToVisibilityConverter.Instance}}">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="*"/>
 								<ColumnDefinition Width="Auto"/>
@@ -201,10 +201,10 @@
 			</Button>
 		</StackPanel>
 		<DockPanel Grid.Row="1" Grid.Column="1" Margin="16">
-			<DatePicker DockPanel.Dock="Left" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата останнього зв'язку" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding Client.DateOfContract}"/>
+			<DatePicker DockPanel.Dock="Left" Margin="0 16 0 0" materialDesign:HintAssist.Hint="Дата останнього зв'язку" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding Client.LastContactTime}" IsEnabled="{Binding IsEditMode, Converter={x:Static converter:InverseBoolConverter.Instance}}"/>
 			<StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
 				<TextBlock Text="Активний користувач" VerticalAlignment="Bottom" Margin="0,0,16,2"></TextBlock>
-				<ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Bottom" IsChecked="{Binding Client.IsActive}"/>
+				<ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Bottom" IsChecked="{Binding Client.IsActive}" IsEnabled="{Binding IsEditMode}"/>
 			</StackPanel>
 		</DockPanel>
 	</Grid>

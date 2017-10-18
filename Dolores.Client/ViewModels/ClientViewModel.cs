@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using Dolores.Client.Commands;
 using Dolores.Client.Models;
@@ -16,11 +19,12 @@ namespace Dolores.Client.ViewModels
 		public string NewFolderName { get; set; }
 		public string NewFolderPath { get; set; }
 
-		public ICommand AddNewPhoneNumberCommand => new RelayCommand(AddNewPhoneNumber, (obj) => { return !string.IsNullOrEmpty(NewPhoneNumber); });
+		public ICommand AddNewPhoneNumberCommand => new RelayCommandWithoutParam(AddNewPhoneNumber, (obj) => { return !string.IsNullOrEmpty(NewPhoneNumber); });
 		public ICommand DeletePhoneCommand => new RelayCommand(DeletePhone);
-		public ICommand StartEditingCommand => new RelayCommand(StartEditing);
-		public ICommand CancelEditingCommand => new RelayCommand(CancelEditing);
-		public ICommand SaveChangesCommand => new RelayCommand(SaveChanges);
+		public ICommand StartEditingCommand => new RelayCommandWithoutParam(StartEditing);
+		public ICommand CancelEditingCommand => new RelayCommandWithoutParam(CancelEditing);
+		public ICommand SaveChangesCommand => new RelayCommandWithoutParam(SaveChanges);
+		public ICommand OpenClientFolderCommand => new RelayCommandWithoutParam(OpenClientFolder);
 
 		public ClientViewModel()
 		{
@@ -79,22 +83,46 @@ namespace Dolores.Client.ViewModels
 			
 		}
 
-		public void StartEditing(object param)
+		public void SelectFolder()
+		{
+			
+		}
+
+		public void OpenClientFolder()
+		{
+			if (string.IsNullOrEmpty(Client.ContractNumber))
+			{
+				MessageBox.Show("Перш ніж відкрити папку користувача, вкажіть будь-ласка номер газового рахунку",
+					"Ого, чогось не вистачає",
+					MessageBoxButton.OK,
+					MessageBoxImage.Information);
+			}
+			else
+			{
+				var curDir = Directory.GetCurrentDirectory();
+				var userFolder = Path.Combine(curDir, Client.ContractNumber);
+				if (!Directory.Exists(userFolder))
+					Directory.CreateDirectory(userFolder);
+
+				Process.Start(userFolder);
+			}
+		}
+		public void StartEditing()
 		{
 			IsEditMode = true;
 		}
 
-		public void CancelEditing(object param)
+		public void CancelEditing()
 		{
 			IsEditMode = false;
 		}
 
-		public void SaveChanges(object param)
+		public void SaveChanges()
 		{
 			IsEditMode = false;
 		}
 
-		public void AddNewPhoneNumber(object param)
+		public void AddNewPhoneNumber()
 		{
 			Client.Phones.Add(new PhoneDto() { Number = NewPhoneNumber });
 			NewPhoneNumber = "";
