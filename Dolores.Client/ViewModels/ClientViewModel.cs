@@ -16,15 +16,21 @@ namespace Dolores.Client.ViewModels
 		public bool IsEditMode { get; set; }
 
 		public string NewPhoneNumber { get; set; }
-		public string NewFolderName { get; set; }
-		public string NewFolderPath { get; set; }
+		public string NewEquimpentName { get; set; }
+		public string NewEquimpentPath { get; set; }
 
 		public ICommand AddNewPhoneNumberCommand => new RelayCommandWithoutParam(AddNewPhoneNumber, (obj) => { return !string.IsNullOrEmpty(NewPhoneNumber); });
 		public ICommand DeletePhoneCommand => new RelayCommand(DeletePhone);
+		
 		public ICommand StartEditingCommand => new RelayCommandWithoutParam(StartEditing);
 		public ICommand CancelEditingCommand => new RelayCommandWithoutParam(CancelEditing);
 		public ICommand SaveChangesCommand => new RelayCommandWithoutParam(SaveChanges);
 		public ICommand OpenClientFolderCommand => new RelayCommandWithoutParam(OpenClientFolder);
+
+		public ICommand SelectFolderCommand => new RelayCommandWithoutParam(SelectFolder);
+		public ICommand AddNewFolderCommand => new RelayCommandWithoutParam(AddNewEquimpent, (obj) => { return !string.IsNullOrEmpty(NewEquimpentName) && !string.IsNullOrEmpty(NewEquimpentPath); });
+		public ICommand DeleteEquimpentCommand => new RelayCommand(DeleteEquimpent);
+		public ICommand OpenEquimpentFolderCommand => new RelayCommand(OpenEquimpentFolder);
 
 		public ClientViewModel()
 		{
@@ -78,14 +84,48 @@ namespace Dolores.Client.ViewModels
 
 		
 
-		public void AddNewFolder()
+		public void AddNewEquimpent()
 		{
-			
+			Client.Equimpents.Add(new EquipmentParamDto
+			{
+				Name = NewEquimpentName,
+				Path = NewEquimpentPath
+			});
+
+			NewEquimpentPath = "";
+			NewEquimpentName = "";
+		}
+
+		public void DeleteEquimpent(object equimpent)
+		{
+			var eq = equimpent as EquipmentParamDto;
+
+			var findedEquimpent = Client.Equimpents.FirstOrDefault(e => e.Path == eq.Path || e.Name == eq.Name);
+
+			if (findedEquimpent != null)
+			{
+				Client.Equimpents.Remove(findedEquimpent);
+			}
+		}
+
+		public void OpenEquimpentFolder(object equimpent)
+		{
+			var eq = equimpent as EquipmentParamDto;
+
+			if(!string.IsNullOrEmpty(eq.Path))
+			{
+				Process.Start(eq.Path);
+			}
+
 		}
 
 		public void SelectFolder()
 		{
-			
+			System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+			if(dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+			{
+				NewEquimpentPath = dialog.SelectedPath;
+			}
 		}
 
 		public void OpenClientFolder()
@@ -107,6 +147,7 @@ namespace Dolores.Client.ViewModels
 				Process.Start(userFolder);
 			}
 		}
+
 		public void StartEditing()
 		{
 			IsEditMode = true;
