@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dolores.Client", "Dolores.Client\Dolores.Client.csproj", "{25C511B7-385A-4BAF-9C9C-7C7B808A807B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dolores.Tests", "Dolores.Tests\Dolores.Tests.csproj", "{1CA52CB1-8B65-4C32-8673-0E5465E03C30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dolores.DbAccess", "Dolores.DbAccess\Dolores.DbAccess.csproj", "{B2E9BDE2-12A3-45F4-8340-D9A0FFAAA346}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dolores.ClientUwp", "Dolores.ClientUwp\Dolores.ClientUwp.csproj", "{EF6BF51D-C369-44C6-BAAE-E941357CF392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,26 +69,6 @@ Global
 		{B2E9BDE2-12A3-45F4-8340-D9A0FFAAA346}.Release|x64.Build.0 = Release|Any CPU
 		{B2E9BDE2-12A3-45F4-8340-D9A0FFAAA346}.Release|x86.ActiveCfg = Release|Any CPU
 		{B2E9BDE2-12A3-45F4-8340-D9A0FFAAA346}.Release|x86.Build.0 = Release|Any CPU
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Debug|ARM.ActiveCfg = Debug|ARM
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Debug|ARM.Build.0 = Debug|ARM
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Debug|ARM.Deploy.0 = Debug|ARM
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Debug|x64.ActiveCfg = Debug|x64
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Debug|x64.Build.0 = Debug|x64
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Debug|x64.Deploy.0 = Debug|x64
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Debug|x86.ActiveCfg = Debug|x86
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Debug|x86.Build.0 = Debug|x86
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Debug|x86.Deploy.0 = Debug|x86
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Release|Any CPU.ActiveCfg = Release|x86
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Release|ARM.ActiveCfg = Release|ARM
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Release|ARM.Build.0 = Release|ARM
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Release|ARM.Deploy.0 = Release|ARM
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Release|x64.ActiveCfg = Release|x64
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Release|x64.Build.0 = Release|x64
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Release|x64.Deploy.0 = Release|x64
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Release|x86.ActiveCfg = Release|x86
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Release|x86.Build.0 = Release|x86
-		{EF6BF51D-C369-44C6-BAAE-E941357CF392}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

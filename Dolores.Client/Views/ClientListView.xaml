@@ -9,8 +9,38 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="ClientListView">
-	<StackPanel Background="{StaticResource MaterialDesignPaper}" Orientation="Vertical">
-		<ListBox ItemsSource="{Binding Clients}" HorizontalContentAlignment="Stretch">
+	<Grid Background="{StaticResource MaterialDesignPaper}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<GroupBox Grid.Row="0">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="2*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+
+				<ComboBox  Grid.Column="0" Margin="8 0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Пошук" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+					<ComboBoxItem IsSelected="True">Номер договору</ComboBoxItem>
+					<ComboBoxItem>Номер телефону</ComboBoxItem>
+					<ComboBoxItem>ПІБ</ComboBoxItem>
+				</ComboBox>
+
+				<TextBox Grid.Column="1"  Margin="8 0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Введіть символи для пошуку" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+				<Button Grid.Column="2" Content="Знайти"/>
+			</Grid>
+		</GroupBox>
+
+
+		<ListBox Grid.Row="1" ItemsSource="{Binding Clients}" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel Background="#ECEFF1" Orientation="Horizontal">
@@ -70,5 +100,9 @@
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>
-    </StackPanel>
+
+		<StackPanel Grid.Row="2" Margin="0 16 0 1">
+			<Button  Content="Додати нового користувача" HorizontalAlignment="Stretch"/>
+		</StackPanel>
+	</Grid>
 </Page>
