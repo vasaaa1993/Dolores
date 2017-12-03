@@ -4,14 +4,14 @@ using Dolores.Client.Models;
 
 namespace Dolores.Client.ViewModels
 {
-    class ClientsListViewModel
-    {
-	    public ObservableCollection<ClientDto> Clients { get; set; }
+	public class ClientsListViewModel : BaseViewModel
+	{
+		public ObservableCollection<ClientDto> Clients { get; set; }
 
-	    public ClientsListViewModel()
-	    {
-		    Clients = new ObservableCollection<ClientDto>()
-		    {
+		public ClientsListViewModel()
+		{
+			Clients = new ObservableCollection<ClientDto>()
+			{
 				new ClientDto()
 				{
 					FirstName = "Василь",
@@ -271,49 +271,49 @@ namespace Dolores.Client.ViewModels
 					}
 				},
 				new ClientDto()
-			    {
-				    FirstName = "Ярослав",
-				    SecondName = "Барна",
-				    MiddleName = "Олегович",
-				    Region = "Тернопільська",
-				    District = "Чортківчький",
-				    Town = "Білобожниця",
-				    Street = "Шевченка",
-				    Building = "5",
-				    Apartment = "",
+				{
+					FirstName = "Ярослав",
+					SecondName = "Барна",
+					MiddleName = "Олегович",
+					Region = "Тернопільська",
+					District = "Чортківчький",
+					Town = "Білобожниця",
+					Street = "Шевченка",
+					Building = "5",
+					Apartment = "",
 
-				    Email = "vasaaa1993@gmail.com",
-				    LastContactTime = DateTime.Now,
-				    DateOfContract = DateTime.Now,
-				    GasSealNumber = "134454354",
-				    GasServiceContractNumber = "321321321",
-				    ContractNumber = "65465465",
+					Email = "vasaaa1993@gmail.com",
+					LastContactTime = DateTime.Now,
+					DateOfContract = DateTime.Now,
+					GasSealNumber = "134454354",
+					GasServiceContractNumber = "321321321",
+					ContractNumber = "65465465",
 
-				    Description = "Дуже крутий чувак",
-				    Phones = new ObservableCollection<PhoneDto>()
-				    {
-					    new PhoneDto()
-					    {
-						    Number = "0932266519"
-					    },
-					    new PhoneDto()
-					    {
-						    Number = "093226520"
-					    }
-				    },
-				    Equimpents = new ObservableCollection<EquipmentParamDto>()
-				    {
-					    new EquipmentParamDto()
-					    {
-						    Name = "Інструкція",
-					    },
-					    new EquipmentParamDto()
-					    {
-						    Name = "Специфікація"
-					    }
-				    }
-			    }
+					Description = "Дуже крутий чувак",
+					Phones = new ObservableCollection<PhoneDto>()
+					{
+						new PhoneDto()
+						{
+							Number = "0932266519"
+						},
+						new PhoneDto()
+						{
+							Number = "093226520"
+						}
+					},
+					Equimpents = new ObservableCollection<EquipmentParamDto>()
+					{
+						new EquipmentParamDto()
+						{
+							Name = "Інструкція",
+						},
+						new EquipmentParamDto()
+						{
+							Name = "Специфікація"
+						}
+					}
+				}
 			};
-	    }
-    }
+		}
+	}
 }

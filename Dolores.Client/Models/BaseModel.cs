@@ -4,7 +4,7 @@ using Dolores.Client.Annotations;
 
 namespace Dolores.Client.Models
 {
-    abstract class BaseModel: INotifyPropertyChanged
+    public abstract class BaseModel: INotifyPropertyChanged
     {
 	    public event PropertyChangedEventHandler PropertyChanged;
 

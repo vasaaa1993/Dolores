@@ -10,7 +10,7 @@ using Dolores.Client.Models;
 
 namespace Dolores.Client.ViewModels
 {
-    class ClientViewModel: BaseViewModel
+    public class ClientViewModel: BaseViewModel
 	{
 	    public ClientDto Client { get; set; }
 		public bool IsEditMode { get; set; }

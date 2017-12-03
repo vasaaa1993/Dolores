@@ -9,7 +9,7 @@ using Dolores.Client.Views.Common;
 
 namespace Dolores.Client.ViewModels
 {
-    public class MainWindowViewModel: INotifyPropertyChanged
+    public class MainWindowViewModel: BaseViewModel
 	{
 		private readonly ClientsListView _clientsListView;
 	    private readonly ClientView _clientView;
@@ -47,16 +47,6 @@ namespace Dolores.Client.ViewModels
 	    {
 		    CurrentPage = _clientView;
 	    }
-
-		
-
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		[NotifyPropertyChangedInvocator]
-		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
 	}
 
 }

@@ -8,7 +8,8 @@
       xmlns:converter="clr-namespace:Dolores.Client.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="800"
-      Title="ClientView">
+      Title="ClientView"
+	  DataContext="{Binding Client, Source={StaticResource Locator}}">
 	<Grid Name="ClientViewRoot" Background="{StaticResource MaterialDesignPaper}">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="1*"/>

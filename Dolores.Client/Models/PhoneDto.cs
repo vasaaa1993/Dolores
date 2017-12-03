@@ -5,10 +5,8 @@ using PropertyChanged;
 
 namespace Dolores.Client.Models
 {
-	class PhoneDto : INotifyPropertyChanged
-	{
-		public event PropertyChangedEventHandler PropertyChanged;
-		
+	public class PhoneDto : BaseModel
+	{		
 		#region Properties
 
 		public int Id { get; set; }

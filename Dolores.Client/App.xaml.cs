@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows;
 using Dolores.Client.ViewModels;
-using Ninject;
 using Dolores.Client.Views;
+using Microsoft.Practices.ServiceLocation;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace Dolores.Client
 {
@@ -11,30 +12,32 @@ namespace Dolores.Client
 	/// </summary>
 	public partial class App : Application
 	{
-		private IKernel container;
-
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			base.OnStartup(e);
 			SetLanguageDictianary();
-			ConfigureContainer();
+			ConfigureServices();
 			ComposeObjects();
 			Current.MainWindow.Show();
 		}
 
-		private void ConfigureContainer()
+		private void ConfigureServices()
 		{
-			this.container = new StandardKernel();
-			container.Bind<MainWindowViewModel>().ToSelf();
-			container.Bind<MainWindow>().ToSelf();
-			container.Bind<ClientView>().ToSelf();
-			container.Bind<ClientsListView>().ToSelf();
-			container.Bind<SelectFolderViewModel>().ToSelf();
+			ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+			//Views
+			SimpleIoc.Default.Register<ClientView>();
+			SimpleIoc.Default.Register<ClientsListView>();
+			SimpleIoc.Default.Register<MainWindow>();
+
+			// View Models
+			SimpleIoc.Default.Register<MainWindowViewModel>();
+			SimpleIoc.Default.Register<ClientsListViewModel>();
+			SimpleIoc.Default.Register<ClientViewModel>();
 		}
 
 		private void ComposeObjects()
 		{
-			Current.MainWindow =  container.Get<MainWindow>();
+			Current.MainWindow =  ServiceLocator.Current.GetInstance<MainWindow>();
 		}
 
 		private void SetLanguageDictianary()

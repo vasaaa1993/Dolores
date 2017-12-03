@@ -8,10 +8,9 @@ namespace Dolores.Client.Views
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		public MainWindow(MainWindowViewModel mainViewModel)
+		public MainWindow()
 		{
 			InitializeComponent();
-			DataContext = mainViewModel;
 		}
 	}
 }
