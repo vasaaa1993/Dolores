@@ -7,12 +7,16 @@ using System.Windows;
 using System.Windows.Input;
 using Dolores.Client.Commands;
 using Dolores.Client.Models;
+using GalaSoft.MvvmLight.Messaging;
+using Dolores.Client.Messanges;
 
 namespace Dolores.Client.ViewModels
 {
     public class ClientViewModel: BaseViewModel
 	{
 	    public ClientDto Client { get; set; }
+
+		private ClientDto _tmpClient;
 		public bool IsEditMode { get; set; }
 
 		public string NewPhoneNumber { get; set; }
@@ -80,9 +84,16 @@ namespace Dolores.Client.ViewModels
 					}
 				}
 		    };
-	    }
+			RegisterMessages();
+		}
 
-		
+		private void RegisterMessages()
+		{
+			Messenger.Default.Register<SelectClientMsg>(this, (msg) =>
+			{
+				Client = msg.Client;
+			});
+		}
 
 		public void AddNewEquimpent()
 		{
@@ -151,11 +162,13 @@ namespace Dolores.Client.ViewModels
 		public void StartEditing()
 		{
 			IsEditMode = true;
+			_tmpClient = Client.Clone() as ClientDto;
 		}
 
 		public void CancelEditing()
 		{
 			IsEditMode = false;
+			Client = _tmpClient; // restore client
 		}
 
 		public void SaveChanges()

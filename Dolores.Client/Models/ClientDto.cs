@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Data.Common;
-using Microsoft.VisualBasic;
 
 namespace Dolores.Client.Models
 {
-	public class ClientDto : BaseModel
+	public class ClientDto : BaseModel, ICloneable
 	{
 
 		#region Properties
@@ -64,6 +62,22 @@ namespace Dolores.Client.Models
 			Phones = new ObservableCollection<PhoneDto>();
 		}
 
+		public object Clone()
+		{
+			ClientDto client = (ClientDto)MemberwiseClone();
+			client.Equimpents = new ObservableCollection<EquipmentParamDto>();
+			client.Phones = new ObservableCollection<PhoneDto>();
+			foreach (var eq in Equimpents)
+			{
+				client.Equimpents.Add(eq.Clone() as EquipmentParamDto);
+			}
 
+			foreach(var phone in Phones)
+			{
+				client.Phones.Add(phone.Clone() as PhoneDto);
+			}
+
+			return client;
+		}
 	}
 }

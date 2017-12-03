@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using Dolores.Client.Models;
+using System.Windows.Input;
+using Dolores.Client.Commands;
+using Dolores.Client.Messanges;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Dolores.Client.ViewModels
 {
 	public class ClientsListViewModel : BaseViewModel
 	{
 		public ObservableCollection<ClientDto> Clients { get; set; }
+
+		public ICommand SelectClientCommand => new RelayCommand(SelectClient);
 
 		public ClientsListViewModel()
 		{
@@ -314,6 +320,18 @@ namespace Dolores.Client.ViewModels
 					}
 				}
 			};
+		}
+
+		public void SelectClient(object client)
+		{
+			var cl = client as ClientDto;
+			if(cl != null)
+			{
+				Messenger.Default.Send(new SelectClientMsg()
+				{
+					Client = cl
+				});
+			}
 		}
 	}
 }
