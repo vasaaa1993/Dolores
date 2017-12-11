@@ -5,18 +5,24 @@ using System.Windows.Input;
 using Dolores.Client.Commands;
 using Dolores.Client.Messanges;
 using GalaSoft.MvvmLight.Messaging;
+using Dolores.Bll.Helpers;
+using System.Collections.Generic;
 
 namespace Dolores.Client.ViewModels
 {
 	public class ClientsListViewModel : BaseViewModel
 	{
-		public ObservableCollection<ClientDto> Clients { get; set; }
+		public ObservableCollection<ClientDto> SearchedClients { get; set; }
+
+		private List<ClientDto> _clients = new List<ClientDto>();
+
+		public SearchParams _searchParams = new SearchParams();
 
 		public ICommand SelectClientCommand => new RelayCommand(SelectClient);
 
 		public ClientsListViewModel()
 		{
-			Clients = new ObservableCollection<ClientDto>()
+			_clients = new List<ClientDto>()
 			{
 				new ClientDto()
 				{
@@ -320,6 +326,14 @@ namespace Dolores.Client.ViewModels
 					}
 				}
 			};
+			
+			
+			SearchedClients = new ObservableCollection<ClientDto>();
+			foreach (var client in _clients)
+			{
+				SearchedClients.Add(client);
+			}
+				
 		}
 
 		public void SelectClient(object client)

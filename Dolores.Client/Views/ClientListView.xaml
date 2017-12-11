@@ -29,7 +29,7 @@
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
 
-				<ComboBox  Grid.Column="0" Margin="8 0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Пошук" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+				<ComboBox  Grid.Column="0" Margin="8 0" VerticalAlignment="Center"  materialDesign:HintAssist.Hint="Пошук" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
 					<ComboBoxItem IsSelected="True">Номер договору</ComboBoxItem>
 					<ComboBoxItem>Номер телефону</ComboBoxItem>
 					<ComboBoxItem>ПІБ</ComboBoxItem>
@@ -44,7 +44,7 @@
 		</GroupBox>
 
 
-		<ListBox x:Name="clientListBox" Grid.Row="1" ItemsSource="{Binding Clients}" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible">
+		<ListBox x:Name="clientListBox" Grid.Row="1" ItemsSource="{Binding SearchedClients}" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="MouseDoubleClick">
 					<i:InvokeCommandAction Command="{Binding SelectClientCommand}" CommandParameter="{Binding ElementName=clientListBox,Path=SelectedItem}" />
