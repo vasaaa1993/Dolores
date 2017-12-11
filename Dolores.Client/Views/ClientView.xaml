@@ -135,7 +135,7 @@
 								<ColumnDefinition Width="Auto"/>
 							</Grid.ColumnDefinitions>
 							<TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Введіть назву" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding NewEquimpentName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-							<Button Grid.Column="1" Padding="5" Margin="5,0" Command="{Binding SelectFolderCommand}">
+							<Button Grid.Column="1" Padding="5" Margin="5,0" Command="{Binding SelectFileCommand}">
 								<Button.Content>
 									<materialDesign:PackIcon Kind="Folder" Width="20px" Height="20px"/>
 								</Button.Content>

@@ -31,7 +31,7 @@ namespace Dolores.Client.ViewModels
 		public ICommand SaveChangesCommand => new RelayCommandWithoutParam(SaveChanges);
 		public ICommand OpenClientFolderCommand => new RelayCommandWithoutParam(OpenClientFolder);
 
-		public ICommand SelectFolderCommand => new RelayCommandWithoutParam(SelectFolder);
+		public ICommand SelectFileCommand => new RelayCommandWithoutParam(SelectFile);
 		public ICommand AddNewFolderCommand => new RelayCommandWithoutParam(AddNewEquimpent, (obj) => { return !string.IsNullOrEmpty(NewEquimpentName) && !string.IsNullOrEmpty(NewEquimpentPath); });
 		public ICommand DeleteEquimpentCommand => new RelayCommand(DeleteEquimpent);
 		public ICommand OpenEquimpentFolderCommand => new RelayCommand(OpenEquimpentFolder);
@@ -130,12 +130,12 @@ namespace Dolores.Client.ViewModels
 
 		}
 
-		public void SelectFolder()
+		public void SelectFile()
 		{
-			System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+			System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
 			if(dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
-				NewEquimpentPath = dialog.SelectedPath;
+				NewEquimpentPath = dialog.FileName;
 			}
 		}
 

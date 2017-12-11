@@ -124,6 +124,7 @@
     <Compile Include="Converters\HeaderToImageConverter.cs" />
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="Converters\InverseBoolToVisibleConverter.cs" />
+    <Compile Include="Messanges\NavigateToClientViewMsg.cs" />
     <Compile Include="Messanges\SelectClientMsg.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ClientDto.cs" />
