@@ -9,7 +9,7 @@
 
 	public class SearchParams
 	{
-		SearchField field;
-		string query;
+		public SearchField field;
+		public string query;
 	}
 }

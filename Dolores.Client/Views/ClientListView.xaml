@@ -26,20 +26,18 @@
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto"/>
-					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*" MinWidth="100"/>
+					<ColumnDefinition Width="Auto"/>
 				</Grid.ColumnDefinitions>
 
-				<ComboBox  Grid.Column="0" Margin="8 0" VerticalAlignment="Center"  materialDesign:HintAssist.Hint="Пошук" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-					<ComboBoxItem IsSelected="True">Номер договору</ComboBoxItem>
-					<ComboBoxItem>Номер телефону</ComboBoxItem>
-					<ComboBoxItem>ПІБ</ComboBoxItem>
-				</ComboBox>
+				<ComboBox  Grid.Column="0" Margin="8 0" VerticalAlignment="Center"  materialDesign:HintAssist.Hint="Пошук" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}" ItemsSource="{Binding SearchParams}" SelectedIndex="{Binding SelectedIndex}"/>
 
-				<TextBox Grid.Column="1"  Margin="8 0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Введіть символи для пошуку" Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+
+				<TextBox Grid.Column="1"  Margin="8 0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Введіть символи для пошуку" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding SearchQuery}">
 
 				</TextBox>
 
-				<!--<Button Grid.Column="2" Content="Знайти"/>-->
+				<Button Grid.Column="2" Content="Знайти" Command="{Binding FilterClientCommand}"/>
 			</Grid>
 		</GroupBox>
 
