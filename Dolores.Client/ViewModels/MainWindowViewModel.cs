@@ -3,6 +3,8 @@ using System.Windows.Input;
 using Dolores.Client.Commands;
 using Dolores.Client.Views;
 using Dolores.Client.Views.Common;
+using GalaSoft.MvvmLight.Messaging;
+using Dolores.Client.Messanges;
 
 namespace Dolores.Client.ViewModels
 {
@@ -13,11 +15,11 @@ namespace Dolores.Client.ViewModels
 
 		public Page CurrentPage { get; set; }
 
-		public ICommand ToClientsListView => new RelayCommand(NavigateToClientsList);
+		public ICommand ToClientsListView => new RelayCommandWithoutParam(NavigateToClientsList);
 
-		public ICommand ToClientView => new RelayCommand(NavigateToClient);
+		public ICommand ToClientView => new RelayCommandWithoutParam(NavigateToClient);
 
-		public ICommand ShowSelectFolderDlg => new RelayCommand(ShowSelectFolder);
+		public ICommand ShowSelectFolderDlg => new RelayCommandWithoutParam(ShowSelectFolder);
 
 
 
@@ -26,27 +28,30 @@ namespace Dolores.Client.ViewModels
 			_clientsListView = clientsListView;
 			_clientView = clientView;
 			RegisterMessages();
-			NavigateToClientsList(null);
+			NavigateToClientsList();
 		}
 
 
-		public void RegisterMessages()
+		private void RegisterMessages()
 		{
-
+			Messenger.Default.Register<SelectClientMsg>(this, (msg) =>
+			{
+				NavigateToClient();
+			});
 		}
 
-		public void NavigateToClientsList(object param)
+		public void NavigateToClientsList()
 		{
 			CurrentPage = _clientsListView;
 		}
 
-		public void ShowSelectFolder(object param)
+		public void ShowSelectFolder()
 		{
 			SelectFolder selectFolder = new SelectFolder();
 			selectFolder.ShowDialog();
 		}
 
-		public void NavigateToClient(object param)
+		public void NavigateToClient()
 		{
 			CurrentPage = _clientView;
 		}
