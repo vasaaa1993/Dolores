@@ -110,7 +110,7 @@
 		</ListBox>
 
 		<StackPanel Grid.Row="2" Margin="0 16 0 1">
-			<Button  Content="Додати нового користувача" HorizontalAlignment="Stretch"/>
+			<Button  Content="Додати нового користувача" HorizontalAlignment="Stretch" Command="{Binding AddNewCommand}"/>
 		</StackPanel>
 	</Grid>
 </Page>

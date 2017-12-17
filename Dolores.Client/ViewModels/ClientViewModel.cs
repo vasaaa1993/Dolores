@@ -92,6 +92,8 @@ namespace Dolores.Client.ViewModels
 			Messenger.Default.Register<SelectClientMsg>(this, (msg) =>
 			{
 				Client = msg.Client;
+				if (Client.IsNew == true)
+					IsEditMode = true;
 			});
 		}
 
@@ -174,6 +176,13 @@ namespace Dolores.Client.ViewModels
 		public void SaveChanges()
 		{
 			IsEditMode = false;
+			if(Client.IsNew == true)
+			{
+				Messenger.Default.Send(new UpdateClientMsg()
+				{
+					Client = Client
+				});
+			}
 		}
 
 		public void AddNewPhoneNumber()

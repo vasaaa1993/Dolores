@@ -126,6 +126,7 @@
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="Converters\InverseBoolToVisibleConverter.cs" />
     <Compile Include="Messanges\SelectClientMsg.cs" />
+    <Compile Include="Messanges\UpdateClientMsg.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ClientDto.cs" />
     <Compile Include="Models\EquipmentParamDto.cs" />

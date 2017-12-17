@@ -15,7 +15,7 @@ namespace Dolores.Client.ViewModels
 	{
 		//переробити
 
-		public List<string> SearchParams => new List<string>()
+		private List<string> SearchParams => new List<string>()
 				{
 					"Номер договору",
 					"Номер телефону",
@@ -26,7 +26,7 @@ namespace Dolores.Client.ViewModels
 
 		public int SelectedIndex
 		{
-			get { return _selectedItem;	}
+			get { return _selectedItem; }
 			set
 			{
 				_searchParams.field = (SearchField)value;
@@ -48,6 +48,7 @@ namespace Dolores.Client.ViewModels
 
 		public ICommand SelectClientCommand => new RelayCommand(SelectClient);
 		public ICommand FilterClientCommand => new RelayCommandWithoutParam(Search);
+		public ICommand AddNewCommand => new RelayCommandWithoutParam(NewClient);
 
 		public ClientsListViewModel()
 		{
@@ -355,26 +356,54 @@ namespace Dolores.Client.ViewModels
 					}
 				}
 			};
-			
-			
+
+			RegisterMessages();
+
 			SearchedClients = new ObservableCollection<ClientDto>();
 			foreach (var client in _clients)
 			{
 				SearchedClients.Add(client);
 			}
-				
+
+		}
+
+		public void RegisterMessages()
+		{
+			Messenger.Default.Register<UpdateClientMsg>(this, (msg) =>
+			{
+				SearchQuery = "";
+				if(msg.Client.IsNew == true)
+				{
+					_clients.Add(msg.Client);
+				}
+				else
+				{
+					var index = _clients.IndexOf(msg.Client);
+					_clients.RemoveAt(index);
+					_clients.Insert(index, msg.Client);
+				}
+				Search();
+			});
 		}
 
 		public void SelectClient(object client)
 		{
 			var cl = client as ClientDto;
-			if(cl != null)
+			if (cl != null)
 			{
 				Messenger.Default.Send(new SelectClientMsg()
 				{
 					Client = cl
 				});
 			}
+		}
+
+		public void NewClient()
+		{
+			Messenger.Default.Send(new SelectClientMsg()
+			{
+				Client = new ClientDto() { IsNew = true }
+			});
 		}
 
 		public void Search()

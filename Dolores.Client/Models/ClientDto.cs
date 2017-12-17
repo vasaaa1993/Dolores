@@ -51,6 +51,7 @@ namespace Dolores.Client.Models
 
 		public string EquipmentModel { get; set; }
 
+		public bool IsNew { get; set; }
 		#endregion
 
 		public virtual ObservableCollection<EquipmentParamDto> Equimpents { get; set; }
