@@ -9,6 +9,9 @@ using Dolores.Client.Commands;
 using Dolores.Client.Models;
 using GalaSoft.MvvmLight.Messaging;
 using Dolores.Client.Messanges;
+using Dolores.DbAccess.Entities;
+using Dolores.DbAccess.Interfaces;
+using System.Collections.Generic;
 
 namespace Dolores.Client.ViewModels
 {
@@ -17,6 +20,9 @@ namespace Dolores.Client.ViewModels
 	    public ClientDto Client { get; set; }
 
 		private ClientDto _tmpClient;
+
+		private List<PhoneDto> _phonesForDelete = new List<PhoneDto>();
+
 		public bool IsEditMode { get; set; }
 
 		public string NewPhoneNumber { get; set; }
@@ -36,54 +42,13 @@ namespace Dolores.Client.ViewModels
 		public ICommand DeleteEquimpentCommand => new RelayCommand(DeleteEquimpent);
 		public ICommand OpenEquimpentFolderCommand => new RelayCommand(OpenEquimpentFolder);
 
+		private readonly IRepository<ClientE> _repository;
 		public ClientViewModel()
 		{
 			IsEditMode = false;
-		    Client = new ClientDto()
-		    {
-				IsActive = false,
 
-			    FirstName = "Василь",
-			    SecondName = "Барна",
-			    MiddleName = "Олегович",
-			    Region = "Тернопільська",
-			    District = "Чортківчький",
-			    Town = "Білобожниця",
-			    Street = "Шевченка",
-			    Building = "5",
-			    Apartment = "0",
+			_repository = _unitOfWork.Repository<ClientE>();
 
-			    Email = "vasaaa1993@gmail.com",
-			    LastContactTime = DateTime.Now,
-			    DateOfContract = DateTime.Now,
-			    GasSealNumber = "134454354",
-			    GasServiceContractNumber = "321321321",
-			    ContractNumber = "65465465",
-
-			    Description = "Дуже крутий чувак",
-				Phones = new ObservableCollection<PhoneDto>()
-				{
-					new PhoneDto()
-					{
-						Number = "0932266519"
-					},
-					new PhoneDto()
-					{
-						Number = "093226520"
-					}
-				},
-				Equimpents = new ObservableCollection<EquipmentParamDto>()
-				{
-					new EquipmentParamDto()
-					{
-						Name = "Інструкція",
-					},
-					new EquipmentParamDto()
-					{
-						Name = "Специфікація"
-					}
-				}
-		    };
 			RegisterMessages();
 		}
 
@@ -178,11 +143,52 @@ namespace Dolores.Client.ViewModels
 			IsEditMode = false;
 			if(Client.IsNew == true)
 			{
+				_repository.Add(Client.ToDbModel());
 				Messenger.Default.Send(new UpdateClientMsg()
 				{
 					Client = Client
 				});
 			}
+			else
+			{
+				var client = Client.ToDbModel();
+				_repository.Attach(client);
+
+				//var phoneRepo = _unitOfWork.Repository<PhoneE>();
+				//foreach(var p in client.Phones)
+				//{
+				//	phoneRepo.Attach(p);
+				//}
+				//foreach (var p in client.Phones)
+				//{
+				//	client.Phones.Remove(p);
+				//}
+				//_repositor
+				//var phones = client.Phones;
+				//var equipment = client.Equimpents;
+				
+
+				//_unitOfWork.Save();
+
+
+				//foreach (var p in _phonesForDelete.Select(p => p.ToDbModel()).Where(p => p.Id != 0))
+				//{
+				//	phoneRepo.Attach(p);
+				//}
+		
+				//_unitOfWork.Save();
+				//_phonesForDelete.Clear();
+				//_unitOfWork.Repository<EquimpentParamE>().DeleteRange(equipment.Where(e => e.Id != 0));
+
+
+				//foreach (var p in phones)
+				//	client.Phones.Add(p);
+
+				//foreach (var e in equipment)
+				//	client.Equimpents.Add(e);
+
+			}
+			_unitOfWork.Save();
 		}
 
 		public void AddNewPhoneNumber()
@@ -195,6 +201,7 @@ namespace Dolores.Client.ViewModels
 		{
 			var ph = phone as string;
 			var findedPhone = Client.Phones.FirstOrDefault(p => p.Number == ph);
+			_phonesForDelete.Add(findedPhone);
 
 			if (findedPhone != null)
 			{

@@ -53,7 +53,6 @@
     <Compile Include="EF\DoloresDbContext.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\EquimpentParam.cs" />
-    <Compile Include="Entities\Equipment.cs" />
     <Compile Include="Entities\Phone.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
@@ -69,6 +68,18 @@
     <Compile Include="Migrations\201709091631175_changedDb.cs" />
     <Compile Include="Migrations\201709091631175_changedDb.Designer.cs">
       <DependentUpon>201709091631175_changedDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802171256022_changed int to string.cs" />
+    <Compile Include="Migrations\201802171256022_changed int to string.Designer.cs">
+      <DependentUpon>201802171256022_changed int to string.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181304301_int to string.cs" />
+    <Compile Include="Migrations\201802181304301_int to string.Designer.cs">
+      <DependentUpon>201802181304301_int to string.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181407078_added new field.cs" />
+    <Compile Include="Migrations\201802181407078_added new field.Designer.cs">
+      <DependentUpon>201802181407078_added new field.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +97,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709091631175_changedDb.resx">
       <DependentUpon>201709091631175_changedDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802171256022_changed int to string.resx">
+      <DependentUpon>201802171256022_changed int to string.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181304301_int to string.resx">
+      <DependentUpon>201802181304301_int to string.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181407078_added new field.resx">
+      <DependentUpon>201802181407078_added new field.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

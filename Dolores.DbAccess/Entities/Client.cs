@@ -5,7 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dolores.DbAccess.Entities
 {
-	class Client : IEntity
+	[Table("Clients")]
+	public class ClientE : IEntity
 	{
 		public int Id { get; set; }
 
@@ -28,21 +29,24 @@ namespace Dolores.DbAccess.Entities
 		public DateTime LastContactTime { get; set; }
 		[Column(TypeName = "DateTime")]
 		public DateTime DateOfContract { get; set; }
+		[Column(TypeName = "DateTime")]
+		public DateTime DateOfContractContinuation { get; set; }
 
-		public int GasSealNumber { get; set; }
-		public int GasServiceContractNumber { get; set; }
-		public int ContractNumber { get; set; }
+		public string GasSealNumber { get; set; }
+		public string EquipmentModel { get; set; }
+		public string GasServiceContractNumber { get; set; }
+		public string ContractNumber { get; set; }
 		public string Description { get; set; }
 
 		//public virtual Equipment Equipment { get; set; }
 
-		public virtual ICollection<EquimpentParam> Equimpents { get; set; }
-		public virtual ICollection<Phone> Phones { get; set; }
+		public virtual ICollection<EquimpentParamE> Equimpents { get; set; }
+		public virtual ICollection<PhoneE> Phones { get; set; }
 
-		public Client()
+		public ClientE()
 		{
-			Equimpents = new List<EquimpentParam>();
-			Phones = new List<Phone>(); 
+			Equimpents = new List<EquimpentParamE>();
+			Phones = new List<PhoneE>(); 
 		}
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dolores.DbAccess.Entities;
+using System;
 using System.Collections.ObjectModel;
 
 namespace Dolores.Client.Models
@@ -59,6 +60,7 @@ namespace Dolores.Client.Models
 
 		public ClientDto()
 		{
+			LastContactTime = DateOfContract = DateOfContractContinuation = DateTime.Now;
 			Equimpents = new ObservableCollection<EquipmentParamDto>();
 			Phones = new ObservableCollection<PhoneDto>();
 		}
@@ -79,6 +81,81 @@ namespace Dolores.Client.Models
 			}
 
 			return client;
+		}
+	}
+
+	public static class ClientExtentions
+	{
+		public static ClientE ToDbModel(this ClientDto client)
+		{
+			if (client == null)
+				return null;
+			var cl = new ClientE()
+			{
+				Apartment = client.Apartment,
+				Building = client.Building,
+				ContractNumber = client.ContractNumber,
+				DateOfContract = client.DateOfContract,
+				Description = client.Description,
+				Distance = client.Distance,
+				District = client.District,
+				Email = client.Email,
+				FirstName = client.FirstName,
+				GasSealNumber = client.GasSealNumber,
+				GasServiceContractNumber = client.GasServiceContractNumber,
+				Id = client.Id,
+				IsActive = client.IsActive,
+				LastContactTime = client.LastContactTime,
+				MiddleName = client.MiddleName,
+				Region = client.Region,
+				SecondName = client.SecondName,
+				Street = client.Street,
+				Town = client.Town,
+				DateOfContractContinuation = client.DateOfContractContinuation,
+				EquipmentModel  =client.EquipmentModel,
+			};
+			foreach (PhoneDto p in client.Phones)
+				cl.Phones.Add(p.ToDbModel());
+			foreach (EquipmentParamDto e in client.Equimpents)
+				cl.Equimpents.Add(e.ToDbModel());
+
+			return cl;
+			
+		}
+		public static ClientDto ToDto(this ClientE client)
+		{
+			if (client == null)
+				return null;
+			var cl = new ClientDto()
+			{
+				Apartment = client.Apartment,
+				Building = client.Building,
+				ContractNumber = client.ContractNumber,
+				DateOfContract = client.DateOfContract,
+				Description = client.Description,
+				Distance = client.Distance,
+				District = client.District,
+				Email = client.Email,
+				FirstName = client.FirstName,
+				GasSealNumber = client.GasSealNumber,
+				GasServiceContractNumber = client.GasServiceContractNumber,
+				Id = client.Id,
+				IsActive = client.IsActive,
+				LastContactTime = client.LastContactTime,
+				MiddleName = client.MiddleName,
+				Region = client.Region,
+				SecondName = client.SecondName,
+				Street = client.Street,
+				Town = client.Town,
+				DateOfContractContinuation = client.DateOfContractContinuation,
+				EquipmentModel = client.EquipmentModel
+			};
+			foreach (PhoneE p in client.Phones)
+				cl.Phones.Add(p.ToModel());
+			foreach (EquimpentParamE e in client.Equimpents)
+				cl.Equimpents.Add(e.ToModel());
+
+			return cl;
 		}
 	}
 }

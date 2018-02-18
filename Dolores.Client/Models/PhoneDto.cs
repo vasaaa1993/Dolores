@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dolores.DbAccess.Entities;
+using System;
 
 namespace Dolores.Client.Models
 {
@@ -17,5 +18,30 @@ namespace Dolores.Client.Models
 
 		#endregion
 
+	}
+
+
+	public static class PhoneExtentions
+	{
+		public static PhoneE ToDbModel(this PhoneDto phone)
+		{
+			if (phone == null)
+				return null;
+			return new PhoneE()
+			{
+				Id = phone.Id,
+				Number = phone.Number
+			};
+		}
+		public static PhoneDto ToModel(this PhoneE phone)
+		{
+			if (phone == null)
+				return null;
+			return new PhoneDto()
+			{
+				Id = phone.Id,
+				Number = phone.Number
+			};
+		}
 	}
 }

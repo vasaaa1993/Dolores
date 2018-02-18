@@ -8,14 +8,17 @@ using GalaSoft.MvvmLight.Messaging;
 using Dolores.Bll.Helpers;
 using System.Collections.Generic;
 using System.Linq;
+using Dolores.DbAccess.Entities;
+using Dolores.DbAccess.Interfaces;
 
 namespace Dolores.Client.ViewModels
 {
 	public class ClientsListViewModel : BaseViewModel
 	{
 		//переробити
+		private IRepository<ClientE> _repository;
 
-		private List<string> SearchParams => new List<string>()
+		public List<string> SearchParams => new List<string>()
 				{
 					"Номер договору",
 					"Номер телефону",
@@ -52,6 +55,16 @@ namespace Dolores.Client.ViewModels
 
 		public ClientsListViewModel()
 		{
+			_repository = _unitOfWork.Repository<ClientE>();
+
+			_clients = _repository.All().Select(cl => cl.ToDto()).ToList();
+			/*
+			client1.Phones.Add(new PhoneE()
+			{
+				Number = "asdasd"
+			});
+
+			_unitOfWork.Save();
 			_clients = new List<ClientDto>()
 			{
 				new ClientDto()
@@ -355,7 +368,7 @@ namespace Dolores.Client.ViewModels
 						}
 					}
 				}
-			};
+			};*/
 
 			RegisterMessages();
 
